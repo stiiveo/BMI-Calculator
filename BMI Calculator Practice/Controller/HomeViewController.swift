@@ -10,10 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var heightLabel: UILabel!
-    @IBOutlet weak var weightLabel: UILabel!
-    @IBOutlet weak var heightSlider: UISlider!
-    @IBOutlet weak var weightSlider: UISlider!
+    @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var calculateBtn: UIButton!
     
     var bmiCalculator = BmiCalculator()
@@ -22,29 +20,40 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // heightLabel's text = slider's current value + localized unit
-        heightLabel.text = String(format: "%.0f", heightSlider.value) + strings.lengthUnit
-        
-        // weightLabel's text = slider's current value + localized unit
-        weightLabel.text = String(format: "%.0f", weightSlider.value) + strings.weightUnit
-        
         // Make 'Calculate button's rounded
         calculateBtn.layer.cornerRadius = 10
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
     }
 
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBAction func heightAdjusted(_ sender: UISlider) {
-        heightLabel.text = String(format: "%.0f", sender.value) + strings.lengthUnit
+//        heightLabel.text = String(format: "%.0f", sender.value) + strings.lengthUnit
     }
     
     @IBAction func weightAdjusted(_ sender: UISlider) {
-        weightLabel.text = String(format: "%.0f", sender.value) + strings.weightUnit
+//        weightLabel.text = String(format: "%.0f", sender.value) + strings.weightUnit
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        let height = heightSlider.value
-        let weight = weightSlider.value
-        
-        bmiCalculator.calculateBMI(heightInCentimeter: height, weight: weight)
+        if heightTextField.text?.isEmpty == false && weightTextField.text?.isEmpty == false {
+            if let heightString = heightTextField.text, let weightString = weightTextField.text {
+                if let heightDoubleValue = Double(heightString), let weightDouble = Double(weightString) {
+                    //Calculate BMI with textfields' current value and store the result at BMICalculator's var bmi
+                    bmiCalculator.calculateBMI(heightInCentimeter: heightDoubleValue, weight: weightDouble)
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

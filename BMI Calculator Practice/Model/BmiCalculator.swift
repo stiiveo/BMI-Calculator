@@ -13,10 +13,10 @@ struct BmiCalculator {
     var bmi: BMI?
     var strings = Strings()
     
-    mutating func calculateBMI(heightInCentimeter: Float, weight: Float) {
+    mutating func calculateBMI(heightInCentimeter: Double, weight: Double) {
         // BMI = Weight(kg) / ( Height(m) )^2
         let heightInMeter = heightInCentimeter / 100
-        let bmiValue = weight / powf(heightInMeter, 2)
+        let bmiValue = weight / pow(heightInMeter, 2)
         
         if bmiValue < 18.5 {
             bmi = BMI(value: bmiValue, advice: strings.underweightAdvice, color: #colorLiteral(red: 0.5261438516, green: 0.761373409, blue: 0.9686274529, alpha: 1))

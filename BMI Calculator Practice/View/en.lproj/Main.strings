@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Advice"; ObjectID = "F8g-G4-ROl"; */
+"F8g-G4-ROl.text" = "Advice";
+
+/* Class = "UILabel"; text = "BMI"; ObjectID = "FDZ-JS-9Uv"; */
+"FDZ-JS-9Uv.text" = "BMI";
+
+/* Class = "UILabel"; text = "Height"; ObjectID = "GEo-fe-lvH"; */
+"GEo-fe-lvH.text" = "Height";
+
+/* Class = "UIButton"; normalTitle = "Save to Health App"; ObjectID = "KAW-Cd-OJ3"; */
+"KAW-Cd-OJ3.normalTitle" = "Save to Health App";
+
+/* Class = "UILabel"; text = "Calculate your BMI"; ObjectID = "bCq-yo-abA"; */
+"bCq-yo-abA.text" = "Calculate your BMI";
+
+/* Class = "UILabel"; text = "25"; ObjectID = "c65-nv-aij"; */
+"c65-nv-aij.text" = "25";
+
+/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "cMs-YM-bZv"; */
+"cMs-YM-bZv.normalTitle" = "Calculate";
+
+/* Class = "UIButton"; normalTitle = "Recalculate"; ObjectID = "dff-D2-jaK"; */
+"dff-D2-jaK.normalTitle" = "Recalculate";
+
+/* Class = "UILabel"; text = "50 kg"; ObjectID = "fXS-j3-j17"; */
+"fXS-j3-j17.text" = "50 kg";
+
+/* Class = "UILabel"; text = "Weight"; ObjectID = "v8r-vU-441"; */
+"v8r-vU-441.text" = "Weight";
+
+/* Class = "UILabel"; text = "1.20 m"; ObjectID = "zvm-XQ-9RB"; */
+"zvm-XQ-9RB.text" = "150 cm";

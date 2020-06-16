@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  BMI Calculator Practice
+
+  Created by Jason Ou Yang on 2020/6/5.
+  Copyright © 2020 Jason Ou Yang. All rights reserved.
+*/
+
+"Advice for underweight" = "A blowing wind can send you away! Eat more food.";
+"Advice for normal weight" = "Fit as a fiddle.";
+"Advice for overweight" = "Eat less, move more!";
+"Advice for obesity" = "Your health is at great risk! Go seek help.";
+"Length unit" = " cm";
+"Weight unit" = " kg";

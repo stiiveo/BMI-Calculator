@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Advice"; ObjectID = "F8g-G4-ROl"; */
+"F8g-G4-ROl.text" = "建議";
+
+/* Class = "UILabel"; text = "BMI"; ObjectID = "FDZ-JS-9Uv"; */
+"FDZ-JS-9Uv.text" = "BMI";
+
+/* Class = "UILabel"; text = "Height"; ObjectID = "GEo-fe-lvH"; */
+"GEo-fe-lvH.text" = "身高";
+
+/* Class = "UIButton"; normalTitle = "Save to Health App"; ObjectID = "KAW-Cd-OJ3"; */
+"KAW-Cd-OJ3.normalTitle" = "儲存至健康App";
+
+/* Class = "UILabel"; text = "What's your height & weight?"; ObjectID = "bCq-yo-abA"; */
+"bCq-yo-abA.text" = "請輸入身高、體重";
+
+/* Class = "UILabel"; text = "25"; ObjectID = "c65-nv-aij"; */
+"c65-nv-aij.text" = "25";
+
+/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "cMs-YM-bZv"; */
+"cMs-YM-bZv.normalTitle" = "計算BMI";
+
+/* Class = "UIButton"; normalTitle = "Recalculate"; ObjectID = "dff-D2-jaK"; */
+"dff-D2-jaK.normalTitle" = "重新計算";
+
+/* Class = "UILabel"; text = "50 kg"; ObjectID = "fXS-j3-j17"; */
+"fXS-j3-j17.text" = "50 公斤";
+
+/* Class = "UILabel"; text = "Weight"; ObjectID = "v8r-vU-441"; */
+"v8r-vU-441.text" = "體重";
+
+/* Class = "UILabel"; text = "150 cm"; ObjectID = "zvm-XQ-9RB"; */
+"zvm-XQ-9RB.text" = "150 公分";

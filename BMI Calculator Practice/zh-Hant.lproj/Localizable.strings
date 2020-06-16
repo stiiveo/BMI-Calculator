@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  BMI Calculator Practice
+
+  Created by Jason Ou Yang on 2020/6/5.
+  Copyright © 2020 Jason Ou Yang. All rights reserved.
+*/
+
+"Advice for underweight" = "一陣風就可以把您帶走，多吃點🍔";
+"Advice for normal weight" = "完美身材👍";
+"Advice for overweight" = "少吃多動🏃‍♀️";
+"Advice for obesity" = "您的健康有很大的風險⚠️";
+"Length unit" = " 公分";
+"Weight unit" = " 公斤";

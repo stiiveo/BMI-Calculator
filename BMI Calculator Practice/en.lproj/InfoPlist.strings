@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  BMI Calculator Practice
+
+  Created by Jason Ou Yang on 2020/6/5.
+  Copyright © 2020 Jason Ou Yang. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "BMI Calculator";

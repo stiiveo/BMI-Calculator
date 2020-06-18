@@ -6,9 +6,18 @@
   Copyright © 2020 Jason Ou Yang. All rights reserved.
 */
 
-"Advice for underweight" = "一陣風就可以把您帶走，多吃點🍔";
+//height and weight label
+"Height label" = "高度（公分）";
+"Weight label" = "體重（公斤）";
+
+//advice for user
+"Advice for underweight" = "一陣風就可以把你帶走，多吃點🍔";
 "Advice for normal weight" = "完美身材👍";
 "Advice for overweight" = "少吃多動🏃‍♀️";
-"Advice for obesity" = "您的健康有很大的風險⚠️";
-"Length unit" = " 公分";
-"Weight unit" = " 公斤";
+"Advice for obesity" = "你的健康有很大的風險⚠️";
+
+//alert popup messages
+"Error title" = "喔，看來有錯誤發生";
+"Error message" = "BMI 資料無法儲存至健康App \n請至「設定 -> 健康 -> 資料權限與裝置」確認「BMI計算機」擁有足夠的權限";
+"Success title" = "完成！";
+"Success message" = "BMI資料已儲存至「健康」App";

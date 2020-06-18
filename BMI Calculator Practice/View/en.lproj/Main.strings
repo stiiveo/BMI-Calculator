@@ -12,7 +12,7 @@
 "KAW-Cd-OJ3.normalTitle" = "Save to Health App";
 
 /* Class = "UILabel"; text = "Calculate your BMI"; ObjectID = "bCq-yo-abA"; */
-"bCq-yo-abA.text" = "Calculate your BMI";
+"bCq-yo-abA.text" = "What's your height & weight?";
 
 /* Class = "UILabel"; text = "25"; ObjectID = "c65-nv-aij"; */
 "c65-nv-aij.text" = "25";

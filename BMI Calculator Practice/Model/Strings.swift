@@ -9,10 +9,14 @@
 import Foundation
 
 struct Strings {
-    let lengthUnit = NSLocalizedString("Length unit", comment: "")
-    let weightUnit = NSLocalizedString("Weight unit", comment: "")
+    let heightLabel = NSLocalizedString("Height label", comment: "")
+    let weightLabel = NSLocalizedString("Weight label", comment: "")
     let underweightAdvice = NSLocalizedString("Advice for underweight", comment: "")
     let normalWeightAdvice = NSLocalizedString("Advice for normal weight", comment: "")
     let overweightAdvice = NSLocalizedString("Advice for overweight", comment: "")
     let obesityAdvice = NSLocalizedString("Advice for obesity", comment: "")
+    let errorTitle = NSLocalizedString("Error title", comment: "")
+    let errorMessage = NSLocalizedString("Error message", comment: "")
+    let successTitle = NSLocalizedString("Success title", comment: "")
+    let successMessages = NSLocalizedString("Success message", comment: "")
 }

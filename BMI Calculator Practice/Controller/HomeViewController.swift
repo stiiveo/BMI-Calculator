@@ -10,15 +10,20 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var calculateBtn: UIButton!
     
     var bmiCalculator = BmiCalculator()
-    var strings = Strings()
+    let labels = Strings()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        heightLabel.text = labels.heightLabel
+        weightLabel.text = labels.weightLabel
         
         // Make 'Calculate button's rounded
         calculateBtn.layer.cornerRadius = 10
@@ -37,20 +42,17 @@ class HomeViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func heightAdjusted(_ sender: UISlider) {
-//        heightLabel.text = String(format: "%.0f", sender.value) + strings.lengthUnit
-    }
-    
-    @IBAction func weightAdjusted(_ sender: UISlider) {
-//        weightLabel.text = String(format: "%.0f", sender.value) + strings.weightUnit
-    }
-    
     @IBAction func buttonPressed(_ sender: UIButton) {
-        if heightTextField.text?.isEmpty == false && weightTextField.text?.isEmpty == false {
-            if let heightString = heightTextField.text, let weightString = weightTextField.text {
-                if let heightDoubleValue = Double(heightString), let weightDouble = Double(weightString) {
+        if !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty {
+            if let heightString = heightTextField.text,
+                let weightString = weightTextField.text {
+                if let heightDoubleValue = Double(heightString),
+                    let weightDouble = Double(weightString) {
+
                     //Calculate BMI with textfields' current value and store the result at BMICalculator's var bmi
                     bmiCalculator.calculateBMI(heightInCentimeter: heightDoubleValue, weight: weightDouble)
+                    
+                    performSegue(withIdentifier: "goToResult", sender: self)
                 }
             }
         }
@@ -64,4 +66,3 @@ class HomeViewController: UIViewController {
         }
     }
 }
-

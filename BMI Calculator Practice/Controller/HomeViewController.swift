@@ -35,6 +35,11 @@ class HomeViewController: UIViewController {
         //tap.cancelsTouchesInView = false
 
         view.addGestureRecognizer(tap)
+        
+        addDoneButtonOnKeyboard()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @objc func dismissKeyboard() {
@@ -63,6 +68,40 @@ class HomeViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             // Send calculated BMI info to ResultVC
             destinationVC.bmi = bmiCalculator.bmi
+        }
+    }
+    
+    func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+
+        heightTextField.inputAccessoryView = doneToolbar
+        weightTextField.inputAccessoryView = doneToolbar
+    }
+
+    @objc func doneButtonAction(){
+        heightTextField.resignFirstResponder()
+        weightTextField.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 6
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
     }
 }

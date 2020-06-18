@@ -24,20 +24,9 @@ class HealthAuthHintVC: UIViewController {
         self.dismiss(animated: true) {
             self.resultVC.requestHKAuth()
         }
-        
-//        let typesToSync: Set = [
-//            HKObjectType.quantityType(forIdentifier: .bodyMassIndex)! ]
-//
-//        if HKHealthStore.isHealthDataAvailable() {
-//            healthStore.requestAuthorization(toShare: typesToSync, read: typesToSync) { (success, error) in
-//                if !success {
-//                    print("HealthKit Authorization Process Failed.")
-//                    return
-//                }
-//
-//            }
-//        }
     }
+    
+    //User pressed 'Cancel' button
     @IBAction func cancelBtnPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

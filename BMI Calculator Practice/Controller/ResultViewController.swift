@@ -61,12 +61,14 @@ class ResultViewController: UIViewController {
         if HKHealthStore.isHealthDataAvailable() {
             healthStore.requestAuthorization(toShare: typesToSync, read: nil) { (success, error) in
                 if !success {
-                    print("HealthKit Authorization Process Failed.")
+                    print("Failed to get HealthKit authorization.")
                     return
                 }
                 // Save result's bmi value to HealthKit
                 self.saveBmiToHK()
             }
+        } else {
+            print("HealthKit is not available.")
         }
     }
     
@@ -91,7 +93,6 @@ class ResultViewController: UIViewController {
                     print("Error saving data to HealthKit.")
                     print(error.debugDescription)
                 } else {
-                    print("check B")
                     // present success message to user
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: self.messages.successTitle, message: self.messages.successMessages, preferredStyle: .alert)

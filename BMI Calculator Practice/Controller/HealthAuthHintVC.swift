@@ -11,12 +11,15 @@ import HealthKit
 
 class HealthAuthHintVC: UIViewController {
 
+    @IBOutlet weak var okBtn: UIButton!
+    
     let healthStore = HKHealthStore()
     let resultVC = ResultViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        okBtn.layer.cornerRadius = 20
     }
     
     //User pressed 'OK' button

@@ -38,8 +38,11 @@ class HomeViewController: UIViewController {
         
         addDoneButtonOnKeyboard()
         
+        //Add keyboard observor to adjust view's y position accordingly.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
 
     @objc func dismissKeyboard() {

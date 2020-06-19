@@ -11,10 +11,10 @@
 "Weight label" = "Weight (kg)";
 
 //advice for user
-"Advice for underweight" = "A blowing wind can send you away! Eat more food.";
+"Advice for underweight" = "A blowing wind can send you away. \nEat more food!";
 "Advice for normal weight" = "Fit as a fiddle.";
-"Advice for overweight" = "Eat less, move more!";
-"Advice for obesity" = "Your health is at great risk! Go seek help.";
+"Advice for overweight" = "Eat less \nMove more!";
+"Advice for obesity" = "Your health is at great risk. \nGo seek help!";
 
 //alert pop up messages
 "Error title" = "Oops! An error occured";

@@ -16,26 +16,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var calculateBtn: UIButton!
     
-    var bmiCalculator = BmiCalculator()
-    let labels = Strings()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        heightLabel.text = labels.heightLabel
-        weightLabel.text = labels.weightLabel
-        
-        // Make "Calculate" button's corner rounded
+        heightLabel.text = Strings.heightLabel
+        weightLabel.text = Strings.weightLabel
         calculateBtn.layer.cornerRadius = 10
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //Uncomment the line below if you want the tap not interfere and cancel other interactions.
         //tap.cancelsTouchesInView = false
 
         view.addGestureRecognizer(tap)
-        
         addDoneButtonOnKeyboard()
         
         //Add keyboard observor to adjust view's y position accordingly.
@@ -51,26 +44,16 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        if !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty {
-            if let heightString = heightTextField.text,
-                let weightString = weightTextField.text {
-                if let heightDoubleValue = Double(heightString),
-                    let weightDouble = Double(weightString) {
-
-                    //Calculate BMI with textfields' current value and store the result at BMICalculator's var bmi
-                    bmiCalculator.calculateBMI(heightInCentimeter: heightDoubleValue, weight: weightDouble)
-                    
-                    performSegue(withIdentifier: "goToResult", sender: self)
-                }
+        guard !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty else { return }
+        
+        if let heightString = heightTextField.text,
+           let weightString = weightTextField.text {
+            
+            if let heightDoubleValue = Double(heightString),
+               let weightDouble = Double(weightString) {
+                calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: heightDoubleValue, weightInKg: weightDouble)
+                performSegue(withIdentifier: "goToResult", sender: self)
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToResult" {
-            let destinationVC = segue.destination as! ResultViewController
-            // Send calculated BMI info to ResultVC
-            destinationVC.bmi = bmiCalculator.bmi
         }
     }
     

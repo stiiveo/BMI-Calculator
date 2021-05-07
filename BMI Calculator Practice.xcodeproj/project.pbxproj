@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F6049D20248771E400381154 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6049D1F248771E400381154 /* HealthKit.framework */; };
-		F60C83E8249B116F00FD7E51 /* HealthAuthHintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60C83E7249B116F00FD7E51 /* HealthAuthHintVC.swift */; };
+		F60C83E8249B116F00FD7E51 /* HKAuthHintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60C83E7249B116F00FD7E51 /* HKAuthHintVC.swift */; };
 		F6782974247FA4A70038EF9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782973247FA4A70038EF9E /* AppDelegate.swift */; };
 		F6782976247FA4A70038EF9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782975247FA4A70038EF9E /* SceneDelegate.swift */; };
 		F6782978247FA4A70038EF9E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782977247FA4A70038EF9E /* HomeViewController.swift */; };
@@ -23,6 +23,7 @@
 		F6A81BFE248A175F00EE1AEC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A81BFD248A175F00EE1AEC /* Default-568h@2x.png */; };
 		F6A81C06248A496A00EE1AEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A81C08248A496A00EE1AEC /* Localizable.strings */; };
 		F6A81C0D248A4D6300EE1AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A81C0F248A4D6300EE1AEC /* InfoPlist.strings */; };
+		F6B25C1B26455EB500BD91F9 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */; };
 		F6F8E83D248DE46100D5DA4C /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8E83C248DE46100D5DA4C /* Strings.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +47,7 @@
 /* Begin PBXFileReference section */
 		F6049D1D248771E400381154 /* BMI Calculator Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BMI Calculator Practice.entitlements"; sourceTree = "<group>"; };
 		F6049D1F248771E400381154 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		F60C83E7249B116F00FD7E51 /* HealthAuthHintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAuthHintVC.swift; sourceTree = "<group>"; };
+		F60C83E7249B116F00FD7E51 /* HKAuthHintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAuthHintVC.swift; sourceTree = "<group>"; };
 		F6782970247FA4A60038EF9E /* BMI Calculator Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BMI Calculator Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6782973247FA4A70038EF9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6782975247FA4A70038EF9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		F6A81C0A248A498200EE1AEC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F6A81C0E248A4D6300EE1AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F6A81C10248A4D6700EE1AEC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		F6F8E83B248DDDBF00D5DA4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F6F8E83C248DE46100D5DA4C /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,7 +164,7 @@
 			children = (
 				F6782977247FA4A70038EF9E /* HomeViewController.swift */,
 				F678298D2480F6AB0038EF9E /* ResultViewController.swift */,
-				F60C83E7249B116F00FD7E51 /* HealthAuthHintVC.swift */,
+				F60C83E7249B116F00FD7E51 /* HKAuthHintVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -201,6 +203,7 @@
 				F6049D1D248771E400381154 /* BMI Calculator Practice.entitlements */,
 				F678297C247FA4AB0038EF9E /* Assets.xcassets */,
 				F678297E247FA4AB0038EF9E /* LaunchScreen.storyboard */,
+				F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -268,7 +271,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Jason Ou Yang";
 				TargetAttributes = {
 					F678296F247FA4A60038EF9E = {
@@ -345,9 +348,10 @@
 				F6782974247FA4A70038EF9E /* AppDelegate.swift in Sources */,
 				F6782976247FA4A70038EF9E /* SceneDelegate.swift in Sources */,
 				F6782993248102B90038EF9E /* BmiCalculator.swift in Sources */,
-				F60C83E8249B116F00FD7E51 /* HealthAuthHintVC.swift in Sources */,
+				F60C83E8249B116F00FD7E51 /* HKAuthHintVC.swift in Sources */,
 				F678298E2480F6AB0038EF9E /* ResultViewController.swift in Sources */,
 				F6F8E83D248DE46100D5DA4C /* Strings.swift in Sources */,
+				F6B25C1B26455EB500BD91F9 /* HealthKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +454,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -511,6 +516,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

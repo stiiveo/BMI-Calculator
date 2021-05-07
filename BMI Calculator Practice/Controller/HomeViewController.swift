@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
         heightLabel.text = labels.heightLabel
         weightLabel.text = labels.weightLabel
         
-        // Make 'Calculate button's rounded
+        // Make "Calculate" button's corner rounded
         calculateBtn.layer.cornerRadius = 10
         
         //Looks for single or multiple taps.
@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
-
+    
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)

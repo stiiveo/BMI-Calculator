@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "D2ED94DF-0B20-44EC-8CA3-C4E37CD52BC1",
+      "name" : "Configuration 1",
+      "options" : {
+        "threadSanitizerEnabled" : false
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "addressSanitizer" : {
+      "enabled" : true
+    },
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:BMI Calculator Practice.xcodeproj",
+        "identifier" : "F6816490249CBCD300931D40",
+        "name" : "BMI Calculator PracticeTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -25,15 +25,18 @@ class HKAuthHintVC: UIViewController {
             guard success else {
                 return
             }
-            
             // Authorized to write BMI data to Health Kit store
-            self.healthKitManager.saveDataToHKStore { success in
-                guard success else {
-                    self.presentErrorAlert()
-                    return
-                }
-                self.presentSuccessAlert()
+            self.saveDataToHKStore()
+        }
+    }
+    
+    private func saveDataToHKStore() {
+        healthKitManager.saveCalculatedValue { success in
+            guard success else {
+                self.presentErrorAlert()
+                return
             }
+            self.presentSuccessAlert()
         }
     }
     
@@ -51,7 +54,7 @@ class HKAuthHintVC: UIViewController {
     
     private func presentErrorAlert() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: Strings.errorTitle, message: Strings.errorMessage, preferredStyle: .alert)
+            let alert = UIAlertController(title: Strings.authErrorTitle, message: Strings.authErrorMessage, preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default) { _ in }
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)

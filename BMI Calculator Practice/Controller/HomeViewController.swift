@@ -22,16 +22,16 @@ class HomeViewController: UIViewController {
         weightLabel.text = Strings.weightLabel
         calculateBtn.layer.cornerRadius = 10
         
-        //Looks for single or multiple taps.
+        // Look for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
-        //Uncomment the line below if you want the tap not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+        // Uncomment the line below if you want the tap not interfere and cancel other interactions.
+//        tap.cancelsTouchesInView = false
 
         view.addGestureRecognizer(tap)
         addDoneButtonOnKeyboard()
         
-        //Add keyboard observor to adjust view's y position accordingly.
+        // Add keyboard observor to adjust view's y position accordingly.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        // Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     

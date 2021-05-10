@@ -6,18 +6,23 @@
   Copyright © 2020 Jason Ou Yang. All rights reserved.
 */
 
-//height and weight label
+// Height and weight label
 "Height label" = "Height (cm)";
 "Weight label" = "Weight (kg)";
 
-//advice for user
+// Health advice for user
 "Advice for underweight" = "A blowing wind can send you away. \nEat more food!";
 "Advice for normal weight" = "Fit as a fiddle.";
 "Advice for overweight" = "Eat less \nMove more!";
 "Advice for obesity" = "Your health is at great risk. \nGo seek help!";
 
-//alert pop up messages
-"Error title" = "Oops! An error occured";
-"Error message" = "Cannot save BMI data to Health App. Please check 'Settings -> Health -> Data Access & Devices' to make sure 'BMI Calculator' has writing access to Health database.";
+// Alert messages
 "Success title" = "Done!";
 "Success message" = "Calculated BMI has been saved to HealthKit.";
+
+"Authoriztion error title" = "Oops! An error occured";
+"Authoriztion error message" = "Cannot save BMI data to Health App. Please check 'Settings -> Health -> Data Access & Devices' to make sure 'BMI Calculator' has writing access to Health database.";
+
+"HealthKit error title" = "Unknown error occured";
+"HealthKit error message" = "Something went wrong with HealthKit operation.";
+

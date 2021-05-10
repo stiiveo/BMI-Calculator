@@ -15,13 +15,13 @@ typealias syncCompletion = (Bool) -> Void
 struct HealthKitManager {
     
     private let healthStore = HKHealthStore()
-    private let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)
+    let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
     
     var dataIsAvailable: Bool {
         return HKHealthStore.isHealthDataAvailable()
     }
     var authStatus: HKAuthorizationStatus {
-        return healthStore.authorizationStatus(for: bmiQuantityType!)
+        return healthStore.authorizationStatus(for: bmiQuantityType)
     }
     
     func requestHKAuth(completion: @escaping authCompletion) {
@@ -31,7 +31,7 @@ struct HealthKitManager {
             return
         }
         
-        let typesToSync: Set = [ bmiQuantityType! ]
+        let typesToSync: Set = [ bmiQuantityType ]
         healthStore.requestAuthorization(toShare: typesToSync, read: nil) { (success, error) in
             guard error == nil else {
                 completion(false)
@@ -42,21 +42,31 @@ struct HealthKitManager {
         }
     }
     
-    func saveDataToHKStore(completion: @escaping syncCompletion) {
+    func saveCalculatedValue(completion: @escaping syncCompletion) {
+        saveData(dataType: bmiQuantityType, withValue: calculatedBmi.value) { success in
+                guard success else {
+                    completion(false)
+                    return
+                }
+                completion(true)
+        }
+    }
+    
+    private func saveData(dataType: HKQuantityType, withValue value: Double, completion: @escaping syncCompletion) {
         // Create HKQuatity type object with unit compatible to HealthKit's BMI unit
-        let bmiQuatity = HKQuantity(unit: HKUnit.count(), doubleValue: calculatedBmi.value)
-        let hKSample = HKQuantitySample(type: bmiQuantityType!, quantity: bmiQuatity, start: Date(), end: Date())
+        let bmiQuatity = HKQuantity(unit: HKUnit.count(), doubleValue: value)
+        let hKSample = HKQuantitySample(type: dataType, quantity: bmiQuatity, start: Date(), end: Date())
         
         healthStore.save(hKSample) { (success, error) in
             
             guard error == nil else {
-                print("Error saving data to Health Kit: \(error!.localizedDescription)")
                 completion(false)
+                print("Error saving object to HealthKit: \(error!.localizedDescription)")
                 return
             }
             
             completion(true)
-            print("BMI data has been saved to Health App!")
+            print("Object with type \(dataType) and value \(value) had been saved to HealthKit store.")
         }
         
     }

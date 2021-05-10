@@ -8,6 +8,8 @@
 
 import UIKit
 
+var calculatedBmi = BMI(value: 0, advice: "", color: .black)
+
 struct BmiCalculator {
     
     func calculateBMI(heightInCentimeter: Double, weightInKg: Double) -> BMI {

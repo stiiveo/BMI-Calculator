@@ -9,8 +9,6 @@
 import UIKit
 import HealthKit
 
-var calculatedBmi = BMI(value: 0, advice: "", color: .black)
-
 class ResultViewController: UIViewController {
     
     @IBOutlet weak var bmiLabel: UILabel!
@@ -32,6 +30,7 @@ class ResultViewController: UIViewController {
         // Make buttons' background corners rounded
         saveToHealthBtn.layer.cornerRadius = 10
         recalculateBtn.layer.cornerRadius = 10
+        saveToHealthBtn.isEnabled = healthKitManager.dataIsAvailable
     }
     
     @IBAction func recalculateBtnPressed(_ sender: UIButton) {
@@ -45,10 +44,12 @@ class ResultViewController: UIViewController {
             // Go To HealthKit Auth Request View
             performSegue(withIdentifier: "goToAuthHint", sender: self)
         case .sharingAuthorized:
-            healthKitManager.saveDataToHKStore { success in
-                if success {
-                    self.presentDoneAlert()
+            healthKitManager.saveCalculatedValue { (success) in
+                guard success else {
+                    self.presentErrorAlert()
+                    return
                 }
+                self.presentDoneAlert()
             }
         @unknown default:
             debugPrint("Unknown case of HealthKit auth status is encountered: \(authStatus)")
@@ -66,4 +67,14 @@ class ResultViewController: UIViewController {
         }
     }
     
+    private func presentErrorAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: Strings.healthKitErrorTitle, message: Strings.healthKitErrorMessage, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel) { _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }

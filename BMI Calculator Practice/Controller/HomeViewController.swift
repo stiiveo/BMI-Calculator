@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
 //        tap.cancelsTouchesInView = false
 
         view.addGestureRecognizer(tap)
-        addDoneButtonOnKeyboard()
+        addBarButtonToKeyboard()
         
         // Add keyboard observor to adjust view's y position accordingly.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -57,25 +57,37 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func addDoneButtonOnKeyboard(){
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        doneToolbar.barStyle = .default
+    private enum ButtonFunction: String {
+        case next = "Next", done = "Done"
+    }
+    
+    private func addBarButtonToKeyboard() {
+        heightTextField.inputAccessoryView = toolbar(withButton: .next)
+        weightTextField.inputAccessoryView = toolbar(withButton: .done)
+    }
+    
+    private func toolbar(withButton button: ButtonFunction) -> UIToolbar {
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        toolbar.barStyle = .default
+        toolbar.sizeToFit()
 
+        // Accessory item
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        let barButton = UIBarButtonItem(title: button.rawValue, style: .plain, target: self, action: #selector(barButtonAction))
 
-        let items = [flexSpace, done]
-        doneToolbar.items = items
-        doneToolbar.sizeToFit()
-
-        heightTextField.inputAccessoryView = doneToolbar
-        weightTextField.inputAccessoryView = doneToolbar
+        toolbar.items = [flexSpace, barButton]
+        return toolbar
     }
 
-    @objc func doneButtonAction(){
-        heightTextField.resignFirstResponder()
-        weightTextField.resignFirstResponder()
+    @objc func barButtonAction() {
+        if heightTextField.isFirstResponder {
+            weightTextField.becomeFirstResponder()
+        } else {
+            weightTextField.resignFirstResponder()
+        }
     }
+    
+    // MARK: - View Position Adjustment
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {

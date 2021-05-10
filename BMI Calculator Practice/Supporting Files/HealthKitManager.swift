@@ -15,7 +15,7 @@ typealias syncCompletion = (Bool) -> Void
 struct HealthKitManager {
     
     private let healthStore = HKHealthStore()
-    let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
+    private let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
     
     var dataIsAvailable: Bool {
         return HKHealthStore.isHealthDataAvailable()

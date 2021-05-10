@@ -15,12 +15,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var heightTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var calculateBtn: UIButton!
+    @IBOutlet weak var hintLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         heightLabel.text = Strings.heightLabel
         weightLabel.text = Strings.weightLabel
+        heightTextField.delegate = self
+        weightTextField.delegate = self
         calculateBtn.layer.cornerRadius = 10
+        hintLabel.text = ""
         
         // Look for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -44,17 +48,32 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        guard !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty else { return }
         
-        if let heightString = heightTextField.text,
-           let weightString = weightTextField.text {
-            
-            if let heightDoubleValue = Double(heightString),
-               let weightDouble = Double(weightString) {
-                calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: heightDoubleValue, weightInKg: weightDouble)
-                performSegue(withIdentifier: "goToResult", sender: self)
-            }
+        guard let heightString = heightTextField.text,
+              let weightString = weightTextField.text else {
+            print("Failed to retrieve text value from either textField.")
+            return
         }
+        
+        guard !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty else {
+            hintLabel.text = "Error: TextField cannot be empty"
+            return
+        }
+        
+        guard let heightDoubleValue = Double(heightString),
+              let weightDouble = Double(weightString) else {
+            print("Failed to get valid Double values from textFields.")
+            return
+        }
+        
+        guard heightDoubleValue != 0, weightDouble != 0 else {
+            hintLabel.text = "Error: TextField's value cannot be 0"
+            return
+        }
+        
+        calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: heightDoubleValue, weightInKg: weightDouble)
+        performSegue(withIdentifier: "goToResult", sender: self)
+        
     }
     
     private enum ButtonFunction: String {
@@ -101,5 +120,33 @@ class HomeViewController: UIViewController {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+    }
+}
+
+// MARK: - TextField Validation
+
+extension HomeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print(string)
+        if let text = textField.text {
+            
+            // Add character 0 if the first input is 0
+            if text.isEmpty && string.contains(".") {
+                textField.text = "0"
+            }
+            
+            // Allow only one dot character in text field
+            if text.contains(".") && string.contains(".") {
+                return false
+            }
+            
+            // Values can not be bigger than 1000
+            if let currentValue = Double(text) {
+                if currentValue >= 999 && string != "" {
+                    return false
+                }
+            }
+        }
+        return true
     }
 }

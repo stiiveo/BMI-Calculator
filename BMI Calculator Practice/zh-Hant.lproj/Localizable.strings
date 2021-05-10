@@ -7,21 +7,25 @@
 */
 
 // Height and weight label
-"Height label" = "高度（公分）";
-"Weight label" = "體重（公斤）";
+"HEIGHT_LABEL" = "高度（公分）";
+"WEIGHT_LABEL" = "體重（公斤）";
+
+// Imput Error
+"EMPTY_INPUT" = "身高／體重未提供";
+"ZERO_INPUT" = "身高及體重不得為０";
 
 // Health advice for user
-"Advice for underweight" = "🌬一陣風就可以把你帶走 \n多吃點！ 🥗";
-"Advice for normal weight" = "完美身材👍";
-"Advice for overweight" = "少吃多動🏃‍♂️";
-"Advice for obesity" = "你的健康有很大的風險⚠️";
+"ADVICE_UNDERWEIGHT" = "🌬一陣風就可以把你帶走 \n多吃點！ 🥗";
+"ADVICE_NORMAL" = "完美身材👍";
+"ADVICE_OVERWEIGHT" = "少吃多動🏃‍♂️";
+"ADVICE_OBESITY" = "你的健康有很大的風險⚠️";
 
 // Alert messages
-"Success title" = "完成！";
-"Success message" = "BMI資料已儲存至「健康」App";
+"SUCCESS_TITLE" = "完成！";
+"SUCCESS_MESSAGE" = "BMI資料已儲存至「健康」App";
 
-"Authoriztion error title" = "喔，看來有錯誤發生";
-"Authoriztion error message" = "BMI 資料無法儲存至健康App \n請至「設定 -> 健康 -> 資料權限與裝置」確認「BMI計算機」擁有足夠的權限";
+"AUTH_ERROR_TITLE" = "喔，看來有錯誤發生";
+"AUTH_ERROR_MESSAGE" = "BMI 資料無法儲存至健康App \n請至「設定 -> 健康 -> 資料權限與裝置」確認「BMI計算機」擁有足夠的權限";
 
-"HealthKit error title" = "發生不明錯誤";
-"HealthKit error message" = "HealthKit出現不明錯誤";
+"HEALTHKIT_ERROR_TITLE" = "發生不明錯誤";
+"HEALTHKIT_ERROR_MESSAGE" = "HealthKit出現不明錯誤";

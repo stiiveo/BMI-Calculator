@@ -12,15 +12,15 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
-    @IBOutlet weak var heightTextField: UITextField!
-    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var heightTextField: CustomTextField!
+    @IBOutlet weak var weightTextField: CustomTextField!
     @IBOutlet weak var calculateBtn: UIButton!
     @IBOutlet weak var hintLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        heightLabel.text = Strings.heightLabel
-        weightLabel.text = Strings.weightLabel
+        heightLabel.text = Strings.localizedString(key: Strings.LocalizationKey.heightLabel)
+        weightLabel.text = Strings.localizedString(key: Strings.LocalizationKey.weightLabel)
         heightTextField.delegate = self
         weightTextField.delegate = self
         calculateBtn.layer.cornerRadius = 10
@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
         }
         
         guard !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty else {
-            hintLabel.text = "Error: TextField cannot be empty"
+            hintLabel.text = Strings.localizedString(key: Strings.LocalizationKey.emptyInput)
             return
         }
         
@@ -67,12 +67,13 @@ class HomeViewController: UIViewController {
         }
         
         guard heightDoubleValue != 0, weightDouble != 0 else {
-            hintLabel.text = "Error: TextField's value cannot be 0"
+            hintLabel.text = Strings.localizedString(key: Strings.LocalizationKey.valueZeroDetected)
             return
         }
         
+        hintLabel.text = ""
         calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: heightDoubleValue, weightInKg: weightDouble)
-        performSegue(withIdentifier: "goToResult", sender: self)
+        performSegue(withIdentifier: Strings.SegueIdentifier.goToResultView, sender: self)
         
     }
     
@@ -126,8 +127,9 @@ class HomeViewController: UIViewController {
 // MARK: - TextField Validation
 
 extension HomeViewController: UITextFieldDelegate {
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(string)
+        
         if let text = textField.text {
             
             // Add character 0 if the first input is 0
@@ -148,5 +150,20 @@ extension HomeViewController: UITextFieldDelegate {
             }
         }
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            if !text.isEmpty {
+                textField.selectAll(self)
+            }
+        }
+    }
+}
+
+class CustomTextField: UITextField {
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        // Disable all available actions: Copy, Paste, Cut, etc.
+        return false
     }
 }

@@ -9,16 +9,33 @@
 import Foundation
 
 struct Strings {
-    static let heightLabel = NSLocalizedString("Height label", comment: "")
-    static let weightLabel = NSLocalizedString("Weight label", comment: "")
-    static let underweightAdvice = NSLocalizedString("Advice for underweight", comment: "")
-    static let normalWeightAdvice = NSLocalizedString("Advice for normal weight", comment: "")
-    static let overweightAdvice = NSLocalizedString("Advice for overweight", comment: "")
-    static let obesityAdvice = NSLocalizedString("Advice for obesity", comment: "")
-    static let authErrorTitle = NSLocalizedString("Authoriztion error title", comment: "")
-    static let authErrorMessage = NSLocalizedString("Authoriztion error message", comment: "")
-    static let successTitle = NSLocalizedString("Success title", comment: "")
-    static let successMessages = NSLocalizedString("Success message", comment: "")
-    static let healthKitErrorTitle = NSLocalizedString("HealthKit error title", comment: "")
-    static let healthKitErrorMessage = NSLocalizedString("HealthKit error message", comment: "")
+    
+    struct SegueIdentifier {
+        static let goToResultView = "goToResult"
+        static let goToAuthView = "goToAuthHint"
+    }
+    
+    
+    struct LocalizationKey {
+        
+        static let heightLabel = "HEIGHT_LABEL"
+        static let weightLabel = "WEIGHT_LABEL"
+        static let underweightAdvice = "ADVICE_UNDERWEIGHT"
+        static let normalWeightAdvice = "ADVICE_NORMAL"
+        static let overweightAdvice = "ADVICE_OVERWEIGHT"
+        static let obesityAdvice = "ADVICE_OBESITY"
+        static let authErrorTitle = "AUTH_ERROR_TITLE"
+        static let authErrorMessage = "AUTH_ERROR_MESSAGE"
+        static let successTitle = "SUCCESS_TITLE"
+        static let successMessage = "SUCCESS_MESSAGE"
+        static let healthKitErrorTitle = "HEALTHKIT_ERROR_TITLE"
+        static let healthKitErrorMessage = "HEALTHKIT_ERROR_MESSAGE"
+        static let emptyInput = "EMPTY_INPUT"
+        static let valueZeroDetected = "ZERO_INPUT"
+        
+    }
+        
+    static func localizedString(key: String) -> String {
+        return NSLocalizedString(key, comment: "")
+    }
 }

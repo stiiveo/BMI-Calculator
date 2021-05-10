@@ -7,22 +7,26 @@
 */
 
 // Height and weight label
-"Height label" = "Height (cm)";
-"Weight label" = "Weight (kg)";
+"HEIGHT_LABEL" = "Height (cm)";
+"WEIGHT_LABEL" = "Weight (kg)";
+
+// Imput Error
+"EMPTY_INPUT" = "Height / Weight is not provided";
+"ZERO_INPUT" = "Height & weight must not be 0";
 
 // Health advice for user
-"Advice for underweight" = "A blowing wind can send you away. \nEat more food!";
-"Advice for normal weight" = "Fit as a fiddle.";
-"Advice for overweight" = "Eat less \nMove more!";
-"Advice for obesity" = "Your health is at great risk. \nGo seek help!";
+"ADVICE_UNDERWEIGHT" = "A blowing wind can send you away. \nEat more food!";
+"ADVICE_NORMAL" = "Fit as a fiddle.";
+"ADVICE_OVERWEIGHT" = "Eat less \nMove more!";
+"ADVICE_OBESITY" = "Your health is at great risk. \nGo seek help!";
 
 // Alert messages
-"Success title" = "Done!";
-"Success message" = "Calculated BMI has been saved to HealthKit.";
+"SUCCESS_TITLE" = "Done!";
+"SUCCESS_MESSAGE" = "Calculated BMI has been saved to HealthKit.";
 
-"Authoriztion error title" = "Oops! An error occured";
-"Authoriztion error message" = "Cannot save BMI data to Health App. Please check 'Settings -> Health -> Data Access & Devices' to make sure 'BMI Calculator' has writing access to Health database.";
+"AUTH_ERROR_TITLE" = "Oops! An error occured";
+"AUTH_ERROR_MESSAGE" = "Cannot save BMI data to Health App. Please check 'Settings -> Health -> Data Access & Devices' to make sure 'BMI Calculator' has writing access to Health database.";
 
-"HealthKit error title" = "Unknown error occured";
-"HealthKit error message" = "Something went wrong with HealthKit operation.";
+"HEALTHKIT_ERROR_TITLE" = "Unknown error occured";
+"HEALTHKIT_ERROR_MESSAGE" = "Something went wrong with HealthKit operation.";
 

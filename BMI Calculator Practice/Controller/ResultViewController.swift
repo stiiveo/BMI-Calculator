@@ -42,7 +42,7 @@ class ResultViewController: UIViewController {
         switch authStatus {
         case .notDetermined, .sharingDenied:
             // Go To HealthKit Auth Request View
-            performSegue(withIdentifier: "goToAuthHint", sender: self)
+            performSegue(withIdentifier: Strings.SegueIdentifier.goToAuthView, sender: self)
         case .sharingAuthorized:
             healthKitManager.saveCalculatedValue { (success) in
                 guard success else {
@@ -58,7 +58,7 @@ class ResultViewController: UIViewController {
     
     private func presentDoneAlert() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: Strings.successTitle, message: Strings.successMessages, preferredStyle: .alert)
+            let alert = UIAlertController(title: Strings.localizedString(key: Strings.LocalizationKey.successTitle), message: Strings.localizedString(key: Strings.LocalizationKey.successMessage), preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .cancel) { _ in
                 self.dismiss(animated: true, completion: nil)
             }
@@ -69,7 +69,7 @@ class ResultViewController: UIViewController {
     
     private func presentErrorAlert() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: Strings.healthKitErrorTitle, message: Strings.healthKitErrorMessage, preferredStyle: .alert)
+            let alert = UIAlertController(title: Strings.localizedString(key: Strings.LocalizationKey.healthKitErrorTitle), message: Strings.localizedString(key: Strings.LocalizationKey.healthKitErrorMessage), preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .cancel) { _ in
                 self.dismiss(animated: true, completion: nil)
             }

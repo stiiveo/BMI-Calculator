@@ -10,6 +10,10 @@
 "HEIGHT_LABEL" = "高度（公分）";
 "WEIGHT_LABEL" = "體重（公斤）";
 
+// Input Accessory Buttons
+"BUTTON_NEXT" = "下一個";
+"BUTTON_DONE" = "完成";
+
 // Imput Error
 "EMPTY_INPUT" = "身高／體重未提供";
 "ZERO_INPUT" = "身高及體重不得為０";

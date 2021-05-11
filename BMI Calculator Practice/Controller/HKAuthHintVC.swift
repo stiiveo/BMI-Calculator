@@ -42,7 +42,7 @@ class HKAuthHintVC: UIViewController {
     
     private func presentSuccessAlert() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: Strings.localizedString(key: Strings.LocalizationKey.successTitle), message: Strings.localizedString(key: Strings.LocalizationKey.successMessage), preferredStyle: .alert)
+            let alert = UIAlertController(title: Strings.localizedString(key: .successTitle), message: Strings.localizedString(key: .successMessage), preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default) { _ in
                 // Data is saved to the store
                 self.dismiss(animated: true)
@@ -54,7 +54,7 @@ class HKAuthHintVC: UIViewController {
     
     private func presentErrorAlert() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: Strings.localizedString(key: Strings.LocalizationKey.authErrorTitle), message: Strings.localizedString(key: Strings.LocalizationKey.authErrorMessage), preferredStyle: .alert)
+            let alert = UIAlertController(title: Strings.localizedString(key: .authErrorTitle), message: Strings.localizedString(key: .authErrorMessage), preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default) { _ in }
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)

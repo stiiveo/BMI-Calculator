@@ -17,10 +17,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var calculateBtn: UIButton!
     @IBOutlet weak var hintLabel: UILabel!
     
+    static let shared = HomeViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        heightLabel.text = Strings.localizedString(key: Strings.LocalizationKey.heightLabel)
-        weightLabel.text = Strings.localizedString(key: Strings.LocalizationKey.weightLabel)
+        heightLabel.text = Strings.localizedString(key: .heightLabel)
+        weightLabel.text = Strings.localizedString(key: .weightLabel)
         heightTextField.delegate = self
         weightTextField.delegate = self
         calculateBtn.layer.cornerRadius = 10
@@ -56,7 +58,7 @@ class HomeViewController: UIViewController {
         }
         
         guard !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty else {
-            hintLabel.text = Strings.localizedString(key: Strings.LocalizationKey.emptyInput)
+            hintLabel.text = Strings.localizedString(key: .emptyInput)
             return
         }
         
@@ -67,33 +69,29 @@ class HomeViewController: UIViewController {
         }
         
         guard heightDoubleValue != 0, weightDouble != 0 else {
-            hintLabel.text = Strings.localizedString(key: Strings.LocalizationKey.valueZeroDetected)
+            hintLabel.text = Strings.localizedString(key: .valueZeroDetected)
             return
         }
         
         hintLabel.text = ""
         calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: heightDoubleValue, weightInKg: weightDouble)
-        performSegue(withIdentifier: Strings.SegueIdentifier.goToResultView, sender: self)
+        performSegue(withIdentifier: SegueIdentifier.goToResultView.rawValue, sender: self)
         
     }
     
-    private enum ButtonFunction: String {
-        case next = "Next", done = "Done"
-    }
-    
     private func addBarButtonToKeyboard() {
-        heightTextField.inputAccessoryView = toolbar(withButton: .next)
-        weightTextField.inputAccessoryView = toolbar(withButton: .done)
+        heightTextField.inputAccessoryView = toolbar(withButtonTitled: Strings.localizedString(key: .buttonNext))
+        weightTextField.inputAccessoryView = toolbar(withButtonTitled: Strings.localizedString(key: .buttonDone))
     }
     
-    private func toolbar(withButton button: ButtonFunction) -> UIToolbar {
+    private func toolbar(withButtonTitled title: String) -> UIToolbar {
         let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         toolbar.barStyle = .default
         toolbar.sizeToFit()
 
         // Accessory item
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let barButton = UIBarButtonItem(title: button.rawValue, style: .plain, target: self, action: #selector(barButtonAction))
+        let barButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(barButtonAction))
 
         toolbar.items = [flexSpace, barButton]
         return toolbar

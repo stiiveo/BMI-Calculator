@@ -8,34 +8,35 @@
 
 import Foundation
 
+enum SegueIdentifier: String {
+    case goToResultView = "goToResult"
+    case goToAuthView = "goToAuthHint"
+}
+
 struct Strings {
     
-    struct SegueIdentifier {
-        static let goToResultView = "goToResult"
-        static let goToAuthView = "goToAuthHint"
-    }
-    
-    
-    struct LocalizationKey {
+    enum LocalizationKey: String {
         
-        static let heightLabel = "HEIGHT_LABEL"
-        static let weightLabel = "WEIGHT_LABEL"
-        static let underweightAdvice = "ADVICE_UNDERWEIGHT"
-        static let normalWeightAdvice = "ADVICE_NORMAL"
-        static let overweightAdvice = "ADVICE_OVERWEIGHT"
-        static let obesityAdvice = "ADVICE_OBESITY"
-        static let authErrorTitle = "AUTH_ERROR_TITLE"
-        static let authErrorMessage = "AUTH_ERROR_MESSAGE"
-        static let successTitle = "SUCCESS_TITLE"
-        static let successMessage = "SUCCESS_MESSAGE"
-        static let healthKitErrorTitle = "HEALTHKIT_ERROR_TITLE"
-        static let healthKitErrorMessage = "HEALTHKIT_ERROR_MESSAGE"
-        static let emptyInput = "EMPTY_INPUT"
-        static let valueZeroDetected = "ZERO_INPUT"
+        case heightLabel = "HEIGHT_LABEL"
+        case weightLabel = "WEIGHT_LABEL"
+        case underweightAdvice = "ADVICE_UNDERWEIGHT"
+        case normalWeightAdvice = "ADVICE_NORMAL"
+        case overweightAdvice = "ADVICE_OVERWEIGHT"
+        case obesityAdvice = "ADVICE_OBESITY"
+        case authErrorTitle = "AUTH_ERROR_TITLE"
+        case authErrorMessage = "AUTH_ERROR_MESSAGE"
+        case successTitle = "SUCCESS_TITLE"
+        case successMessage = "SUCCESS_MESSAGE"
+        case healthKitErrorTitle = "HEALTHKIT_ERROR_TITLE"
+        case healthKitErrorMessage = "HEALTHKIT_ERROR_MESSAGE"
+        case emptyInput = "EMPTY_INPUT"
+        case valueZeroDetected = "ZERO_INPUT"
+        case buttonNext = "BUTTON_NEXT"
+        case buttonDone = "BUTTON_DONE"
         
     }
         
-    static func localizedString(key: String) -> String {
-        return NSLocalizedString(key, comment: "")
+    static func localizedString(key: LocalizationKey) -> String {
+        return NSLocalizedString(key.rawValue, comment: "")
     }
 }

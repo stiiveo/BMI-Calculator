@@ -10,6 +10,10 @@
 "HEIGHT_LABEL" = "Height (cm)";
 "WEIGHT_LABEL" = "Weight (kg)";
 
+// Input Accessory Buttons
+"BUTTON_NEXT" = "Next";
+"BUTTON_DONE" = "Done";
+
 // Imput Error
 "EMPTY_INPUT" = "Height / Weight is not provided";
 "ZERO_INPUT" = "Height & weight must not be 0";

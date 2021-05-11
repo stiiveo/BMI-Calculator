@@ -52,33 +52,25 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        
-        guard let heightString = heightTextField.text,
-              let weightString = weightTextField.text else {
-            print("Failed to retrieve text value from either textField.")
-            return
-        }
-        
-        guard !heightTextField.text!.isEmpty && !weightTextField.text!.isEmpty else {
-            hintLabel.text = Strings.localizedString(key: .emptyInput)
-            return
-        }
-        
-        guard let heightDoubleValue = Double(heightString),
-              let weightDouble = Double(weightString) else {
-            print("Failed to get valid Double values from textFields.")
-            return
-        }
-        
-        guard heightDoubleValue != 0, weightDouble != 0 else {
+        do {
+            let validatedHeight = try heightTextField.validated(byValidator: .height)
+            let validatedWeight = try weightTextField.validated(byValidator: .weight)
+            
+            calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: validatedHeight, weightInKg: validatedWeight)
+            performSegue(withIdentifier: SegueIdentifier.goToResultView.rawValue, sender: self)
+            hintLabel.text = ""
+        } catch ValidationError.emptyField {
+            hintLabel.text = Strings.localizedString(key: .emptyField)
+            
+        } catch ValidationError.zeroValue {
             hintLabel.text = Strings.localizedString(key: .valueZeroDetected)
-            return
+            
+        } catch let ValidationError.message(message) {
+            print(message)
+            
+        } catch {
+            print("Failed to get validated input values: \(error.localizedDescription)")
         }
-        
-        // Input values are valid
-        hintLabel.text = ""
-        calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: heightDoubleValue, weightInKg: weightDouble)
-        performSegue(withIdentifier: SegueIdentifier.goToResultView.rawValue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,6 +78,8 @@ class HomeViewController: UIViewController, HomeVCDelegate {
             destinationVC.delegate = self
         }
     }
+    
+    // MARK: - Toolbar Customization
     
     private func addBarButtonToKeyboard() {
         heightTextField.inputAccessoryView = toolbar(withButtonTitled: Strings.localizedString(key: .buttonNext))
@@ -130,7 +124,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     }
 }
 
-// MARK: - TextField Validation
+// MARK: - TextField Input Manipulation
 
 extension HomeViewController: UITextFieldDelegate {
     
@@ -159,6 +153,7 @@ extension HomeViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Select all of the text field's content if it's not empty
         if let text = textField.text {
             if !text.isEmpty {
                 textField.selectAll(self)
@@ -171,5 +166,12 @@ class CustomTextField: UITextField {
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         // Disable all available actions: Copy, Paste, Cut, etc.
         return false
+    }
+}
+
+extension CustomTextField {
+    func validated(byValidator validatorType: ValidatorType) throws -> Double {
+        let validator = ValidatorFactory.validator(forType: validatorType)
+        return try validator.validated(self.text)
     }
 }

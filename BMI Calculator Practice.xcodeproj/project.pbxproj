@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F6049D20248771E400381154 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6049D1F248771E400381154 /* HealthKit.framework */; };
 		F60C83E8249B116F00FD7E51 /* HKAuthHintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60C83E7249B116F00FD7E51 /* HKAuthHintVC.swift */; };
+		F6239878264A5AD000D460FC /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6239877264A5AD000D460FC /* Validator.swift */; };
 		F6782974247FA4A70038EF9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782973247FA4A70038EF9E /* AppDelegate.swift */; };
 		F6782976247FA4A70038EF9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782975247FA4A70038EF9E /* SceneDelegate.swift */; };
 		F6782978247FA4A70038EF9E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782977247FA4A70038EF9E /* HomeViewController.swift */; };
@@ -48,6 +49,7 @@
 		F6049D1D248771E400381154 /* BMI Calculator Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BMI Calculator Practice.entitlements"; sourceTree = "<group>"; };
 		F6049D1F248771E400381154 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		F60C83E7249B116F00FD7E51 /* HKAuthHintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAuthHintVC.swift; sourceTree = "<group>"; };
+		F6239877264A5AD000D460FC /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		F6782970247FA4A60038EF9E /* BMI Calculator Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BMI Calculator Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6782973247FA4A70038EF9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6782975247FA4A70038EF9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				F678297C247FA4AB0038EF9E /* Assets.xcassets */,
 				F678297E247FA4AB0038EF9E /* LaunchScreen.storyboard */,
 				F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */,
+				F6239877264A5AD000D460FC /* Validator.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			files = (
 				F67829902481016A0038EF9E /* BMI.swift in Sources */,
 				F6782978247FA4A70038EF9E /* HomeViewController.swift in Sources */,
+				F6239878264A5AD000D460FC /* Validator.swift in Sources */,
 				F6782974247FA4A70038EF9E /* AppDelegate.swift in Sources */,
 				F6782976247FA4A70038EF9E /* SceneDelegate.swift in Sources */,
 				F6782993248102B90038EF9E /* BmiCalculator.swift in Sources */,

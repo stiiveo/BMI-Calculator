@@ -29,7 +29,7 @@ struct Strings {
         case successMessage = "SUCCESS_MESSAGE"
         case healthKitErrorTitle = "HEALTHKIT_ERROR_TITLE"
         case healthKitErrorMessage = "HEALTHKIT_ERROR_MESSAGE"
-        case emptyInput = "EMPTY_INPUT"
+        case emptyField = "EMPTY_INPUT"
         case valueZeroDetected = "ZERO_INPUT"
         case buttonNext = "BUTTON_NEXT"
         case buttonDone = "BUTTON_DONE"

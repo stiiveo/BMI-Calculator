@@ -18,6 +18,7 @@ class ResultViewController: UIViewController {
     
     private let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)
     private let healthKitManager = HealthKitManager()
+    var delegate: HomeVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,9 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func recalculateBtnPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.delegate?.heightTextField?.becomeFirstResponder()
+        }
     }
     
     @IBAction func healthKitSyncBtnPressed(_ sender: UIButton) {

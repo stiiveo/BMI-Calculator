@@ -6,9 +6,13 @@
 //  Copyright © 2020 Jason Ou Yang. All rights reserved.
 //
 
+protocol HomeVCDelegate {
+    var heightTextField: CustomTextField! { get }
+}
+
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, HomeVCDelegate {
 
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
@@ -16,8 +20,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var weightTextField: CustomTextField!
     @IBOutlet weak var calculateBtn: UIButton!
     @IBOutlet weak var hintLabel: UILabel!
-    
-    static let shared = HomeViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,10 +75,16 @@ class HomeViewController: UIViewController {
             return
         }
         
+        // Input values are valid
         hintLabel.text = ""
         calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: heightDoubleValue, weightInKg: weightDouble)
         performSegue(withIdentifier: SegueIdentifier.goToResultView.rawValue, sender: self)
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? ResultViewController {
+            destinationVC.delegate = self
+        }
     }
     
     private func addBarButtonToKeyboard() {

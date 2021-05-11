@@ -49,27 +49,13 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     @objc func dismissKeyboard() {
         // Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+        _ = validateInput()
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        do {
-            let validatedHeight = try heightTextField.validated(byValidator: .height)
-            let validatedWeight = try weightTextField.validated(byValidator: .weight)
-            
-            calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: validatedHeight, weightInKg: validatedWeight)
+        if let validatedInput = validateInput() {
+            calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: validatedInput.height, weightInKg: validatedInput.weight)
             performSegue(withIdentifier: SegueIdentifier.goToResultView.rawValue, sender: self)
-            hintLabel.text = ""
-        } catch ValidationError.emptyField {
-            hintLabel.text = Strings.localizedString(key: .emptyField)
-            
-        } catch ValidationError.zeroValue {
-            hintLabel.text = Strings.localizedString(key: .valueZeroDetected)
-            
-        } catch let ValidationError.message(message) {
-            print(message)
-            
-        } catch {
-            print("Failed to get validated input values: \(error.localizedDescription)")
         }
     }
     
@@ -104,6 +90,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
             weightTextField.becomeFirstResponder()
         } else {
             weightTextField.resignFirstResponder()
+            _ = validateInput()
         }
     }
     
@@ -122,6 +109,29 @@ class HomeViewController: UIViewController, HomeVCDelegate {
             self.view.frame.origin.y = 0
         }
     }
+    
+    // MARK: - Input Validation & Hint Label Methods
+    
+    struct ValidInput {
+        var height: Double
+        var weight: Double
+    }
+    
+    private func validateInput() -> ValidInput? {
+        do {
+            let validatedHeight = try heightTextField.validated(byValidator: .height)
+            let validatedWeight = try weightTextField.validated(byValidator: .weight)
+            hintLabel.text = ""
+            return ValidInput(height: validatedHeight, weight: validatedWeight)
+        } catch ValidationError.emptyField {
+            hintLabel.text = Strings.localizedString(key: .emptyField)
+        } catch ValidationError.zeroValue {
+            hintLabel.text = Strings.localizedString(key: .valueZeroDetected)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
 }
 
 // MARK: - TextField Input Manipulation
@@ -132,7 +142,7 @@ extension HomeViewController: UITextFieldDelegate {
         
         if let text = textField.text {
             
-            // Add character 0 if the first input is 0
+            // Add character 0 if the first input is '.'
             if text.isEmpty && string.contains(".") {
                 textField.text = "0"
             }
@@ -142,13 +152,21 @@ extension HomeViewController: UITextFieldDelegate {
                 return false
             }
             
-            // Values can not be bigger than 1000
-            if let currentValue = Double(text) {
-                if currentValue >= 999 && string != "" {
+            // Value can not be bigger than 999
+            if let newValue = Double(text + string) {
+                
+                if newValue > 999 {
                     return false
                 }
             }
+            
+            // Remove first 0 character if there's any
+            if text.count == 1 && text == "0" && string != "." {
+                textField.text = ""
+            }
+            
         }
+        
         return true
     }
     

@@ -139,23 +139,20 @@ class HomeViewController: UIViewController, HomeVCDelegate {
 extension HomeViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         if let text = textField.text {
-            
             // Add character 0 if the first input is '.'
-            if text.isEmpty && string.contains(".") {
+            if text.isEmpty && string == "." {
                 textField.text = "0"
             }
             
             // Allow only one dot character in text field
-            if text.contains(".") && string.contains(".") {
-                return false
-            }
+//            if text.contains(".") && string == "." {
+//                return false
+//            }
             
             // Value can not be bigger than 999
             if let newValue = Double(text + string) {
-                
-                if newValue > 999 {
+                if newValue > 999 && string != "" {
                     return false
                 }
             }
@@ -165,19 +162,26 @@ extension HomeViewController: UITextFieldDelegate {
                 textField.text = ""
             }
             
+            // Limit the maximum character allowed
+            if text.count + string.count > 6 {
+                print("character count will be > 6")
+                return false
+            }
+            
+            // Allow only one decimal point and place
+            let text = text as NSString
+            let candidate = text.replacingCharacters(in: range, with: string)
+            let regex = try? NSRegularExpression(pattern: "^\\d{0,4}(\\.\\d?)?$", options: [])
+            return regex?.firstMatch(in: candidate, options: [], range: NSRange(location: 0, length: candidate.count)) != nil
         }
         
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Select all of the text field's content if it's not empty
-        if let text = textField.text {
-            if !text.isEmpty {
-                textField.selectAll(self)
-            }
-        }
+        textField.clearsOnBeginEditing = true
     }
+    
 }
 
 class CustomTextField: UITextField {

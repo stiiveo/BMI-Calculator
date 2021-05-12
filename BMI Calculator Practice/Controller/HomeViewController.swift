@@ -168,10 +168,10 @@ extension HomeViewController: UITextFieldDelegate {
                 return false
             }
             
-            // Allow only one decimal point and place
+            // Allow total 5 characters with utmost one decimal point and place
             let text = text as NSString
             let candidate = text.replacingCharacters(in: range, with: string)
-            let regex = try? NSRegularExpression(pattern: "^\\d{0,4}(\\.\\d?)?$", options: [])
+            let regex = try? NSRegularExpression(pattern: "^\\d{0,4}(\\.\\d{0,1})?$", options: [])
             return regex?.firstMatch(in: candidate, options: [], range: NSRange(location: 0, length: candidate.count)) != nil
         }
         

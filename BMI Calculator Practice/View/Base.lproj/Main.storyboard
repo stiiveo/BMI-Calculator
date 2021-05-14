@@ -67,7 +67,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mmh-3R-kpF" customClass="CustomTextField" customModule="BMI_Calculator_Practice" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mmh-3R-kpF" customClass="CustomTextField" customModule="BMI_Calculator_Practice" customModuleProvider="target">
                                                         <rect key="frame" x="128" y="0.0" width="100" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="B6h-dK-lCO"/>
@@ -176,7 +176,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAW-Cd-OJ3">
                                                 <rect key="frame" x="0.0" y="0.0" width="275" height="45"/>
-                                                <color key="backgroundColor" red="0.99299854040000002" green="0.35689774159999998" blue="0.62697476149999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.99288970229999995" green="0.33059364559999999" blue="0.61508178710000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="foK-gF-P54"/>
                                                 </constraints>

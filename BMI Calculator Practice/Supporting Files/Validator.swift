@@ -62,7 +62,12 @@ final class Validator: ValidatorConvertible {
 
 extension HomeViewController: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.clearsOnBeginEditing = true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         if let text = textField.text {
             // Add character 0 if the first input is '.'
             if text.isEmpty && string == "." {
@@ -95,10 +100,6 @@ extension HomeViewController: UITextFieldDelegate {
         }
         
         return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.clearsOnBeginEditing = true
     }
     
 }

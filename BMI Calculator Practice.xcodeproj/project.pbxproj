@@ -25,6 +25,7 @@
 		F6A81C06248A496A00EE1AEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A81C08248A496A00EE1AEC /* Localizable.strings */; };
 		F6A81C0D248A4D6300EE1AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A81C0F248A4D6300EE1AEC /* InfoPlist.strings */; };
 		F6B25C1B26455EB500BD91F9 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */; };
+		F6D76406264E6116004099EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D76405264E6116004099EE /* Extensions.swift */; };
 		F6F8E83D248DE46100D5DA4C /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8E83C248DE46100D5DA4C /* Strings.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		F6A81C0E248A4D6300EE1AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F6A81C10248A4D6700EE1AEC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		F6D76405264E6116004099EE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F6F8E83B248DDDBF00D5DA4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F6F8E83C248DE46100D5DA4C /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				F6782979247FA4A70038EF9E /* Main.storyboard */,
+				F678297E247FA4AB0038EF9E /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,9 +207,9 @@
 			children = (
 				F6049D1D248771E400381154 /* BMI Calculator Practice.entitlements */,
 				F678297C247FA4AB0038EF9E /* Assets.xcassets */,
-				F678297E247FA4AB0038EF9E /* LaunchScreen.storyboard */,
 				F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */,
 				F6239877264A5AD000D460FC /* Validator.swift */,
+				F6D76405264E6116004099EE /* Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				F60C83E8249B116F00FD7E51 /* HKAuthHintVC.swift in Sources */,
 				F678298E2480F6AB0038EF9E /* ResultViewController.swift in Sources */,
 				F6F8E83D248DE46100D5DA4C /* Strings.swift in Sources */,
+				F6D76406264E6116004099EE /* Extensions.swift in Sources */,
 				F6B25C1B26455EB500BD91F9 /* HealthKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

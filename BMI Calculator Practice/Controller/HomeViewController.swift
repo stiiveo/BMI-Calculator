@@ -31,7 +31,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
         hintLabel.text = ""
         
         // Look for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
 
         // Uncomment the line below if you want the tap not interfere and cancel other interactions.
 //        tap.cancelsTouchesInView = false
@@ -47,7 +47,6 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     @objc func dismissKeyboard() {
         // Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
-        _ = validateInput()
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -105,10 +104,11 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
+            _ = validateInput()
         }
     }
     
-    // MARK: - Input Validation & Hint Label Methods
+    // MARK: - Input Validation & Hint Label
     
     struct ValidInput {
         var height: Double
@@ -119,29 +119,23 @@ class HomeViewController: UIViewController, HomeVCDelegate {
         do {
             let validatedHeight = try heightTextField.validated(byValidator: .height)
             let validatedWeight = try weightTextField.validated(byValidator: .weight)
-            hintLabel.text = ""
+            hintLabel.updateLabelText(hint: .none)
             return ValidInput(height: validatedHeight, weight: validatedWeight)
         } catch ValidationError.emptyField {
-            hintLabel.text = Strings.localizedString(key: .emptyField)
+            hintLabel.updateLabelText(hint: .emptyField)
         } catch ValidationError.zeroValue {
-            hintLabel.text = Strings.localizedString(key: .valueZeroDetected)
+            hintLabel.updateLabelText(hint: .zeroValue)
         } catch {
             print(error.localizedDescription)
         }
         return nil
     }
+    
 }
 
 class CustomTextField: UITextField {
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         // Disable all available actions: Copy, Paste, Cut, etc.
         return false
-    }
-}
-
-extension CustomTextField {
-    func validated(byValidator validatorType: ValidatorType) throws -> Double {
-        let validator = ValidatorFactory.validator(forType: validatorType)
-        return try validator.validated(self.text)
     }
 }

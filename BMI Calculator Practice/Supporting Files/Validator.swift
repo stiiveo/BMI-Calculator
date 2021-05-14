@@ -6,7 +6,7 @@
 //  Copyright © 2021 Jason Ou Yang. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ValidatorConvertible {
     func validated(_ value: String?) throws -> Double
@@ -28,29 +28,77 @@ enum ValidatorFactory {
 
 enum ValidationError: Error {
     case emptyField, zeroValue
-    case message(String)
+    case other(String)
 }
 
-class Validator: ValidatorConvertible {
+final class Validator: ValidatorConvertible {
     
-    func validated(_ value: String?) throws -> Double {
+    /// Returns `Double` value created from the provided `String` value once it passes the validation process.
+    /// - Parameter string: String value to be validated.
+    /// - Throws: A custom error type object `ValidationError` could be thrown if the provided string value did not pass the validation process.
+    /// - Returns: The `Double` value created from validated string value.
+    func validated(_ string: String?) throws -> Double {
         
-        guard let value = value else {
-            throw ValidationError.message("Failed to retrieve string value from either text field.")
+        guard let string = string else {
+            throw ValidationError.other("Provided.")
         }
         
-        guard !value.isEmpty else {
+        guard !string.isEmpty else {
             throw ValidationError.emptyField
         }
         
-        guard let doubleValue = Double(value) else {
-            throw ValidationError.message("Failed to get valid double values from either text field.")
+        guard let valueCreatedFromString = Double(string) else {
+            throw ValidationError.other("Failed to get valid double values from either text field.")
         }
         
-        guard doubleValue != 0 else {
+        guard valueCreatedFromString != 0 else {
             throw ValidationError.zeroValue
         }
         
-        return Double(value)!
+        // Return validated value
+        return valueCreatedFromString
     }
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            // Add character 0 if the first input is '.'
+            if text.isEmpty && string == "." {
+                textField.text = "0"
+            }
+            
+            // Value can not be bigger than 999
+            if let newValue = Double(text + string) {
+                if newValue > 999 && string != "" {
+                    return false
+                }
+            }
+            
+            // Remove first 0 character if there's any
+            if text.count == 1 && text == "0" && string != "." {
+                textField.text = ""
+            }
+            
+            // Limit the maximum character allowed
+            if text.count + string.count > 6 {
+                print("character count will be > 6")
+                return false
+            }
+            
+            // Allow total 5 characters with utmost one decimal point and place
+            let text = text as NSString
+            let candidate = text.replacingCharacters(in: range, with: string)
+            let regex = try? NSRegularExpression(pattern: "^\\d{0,4}(\\.\\d{0,1})?$", options: [])
+            return regex?.firstMatch(in: candidate, options: [], range: NSRange(location: 0, length: candidate.count)) != nil
+        }
+        
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.clearsOnBeginEditing = true
+    }
+    
 }

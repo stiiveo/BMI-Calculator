@@ -8,9 +8,16 @@
 
 import Foundation
 
-enum SegueIdentifier: String {
-    case goToResultView = "goToResult"
-    case goToAuthView = "goToAuthHint"
+enum SegueIdentifier {
+    case goToResultView
+    case goToAuthView
+    
+    var identifier: String {
+        switch self {
+        case .goToResultView: return "goToResult"
+        case .goToAuthView: return "goToAuthHint"
+        }
+    }
 }
 
 struct Strings {

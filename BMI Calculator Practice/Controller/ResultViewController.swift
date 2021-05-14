@@ -44,8 +44,7 @@ class ResultViewController: UIViewController {
         let authStatus = healthKitManager.authStatus
         switch authStatus {
         case .notDetermined, .sharingDenied:
-            // Go To HealthKit Auth Request View
-            performSegue(withIdentifier: SegueIdentifier.goToAuthView.rawValue, sender: self)
+            performSegue(withIdentifier: SegueIdentifier.goToAuthView.identifier, sender: self)
         case .sharingAuthorized:
             healthKitManager.saveCalculatedValue { (success) in
                 guard success else {

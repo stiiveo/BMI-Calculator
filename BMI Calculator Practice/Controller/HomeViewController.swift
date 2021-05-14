@@ -41,9 +41,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
         
         // Add keyboard observor to adjust view's y position accordingly.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     @objc func dismissKeyboard() {
@@ -55,7 +53,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     @IBAction func buttonPressed(_ sender: UIButton) {
         if let validatedInput = validateInput() {
             calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: validatedInput.height, weightInKg: validatedInput.weight)
-            performSegue(withIdentifier: SegueIdentifier.goToResultView.rawValue, sender: self)
+            performSegue(withIdentifier: SegueIdentifier.goToResultView.identifier, sender: self)
         }
     }
     
@@ -132,56 +130,6 @@ class HomeViewController: UIViewController, HomeVCDelegate {
         }
         return nil
     }
-}
-
-// MARK: - TextField Input Manipulation
-
-extension HomeViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text {
-            // Add character 0 if the first input is '.'
-            if text.isEmpty && string == "." {
-                textField.text = "0"
-            }
-            
-            // Allow only one dot character in text field
-//            if text.contains(".") && string == "." {
-//                return false
-//            }
-            
-            // Value can not be bigger than 999
-            if let newValue = Double(text + string) {
-                if newValue > 999 && string != "" {
-                    return false
-                }
-            }
-            
-            // Remove first 0 character if there's any
-            if text.count == 1 && text == "0" && string != "." {
-                textField.text = ""
-            }
-            
-            // Limit the maximum character allowed
-            if text.count + string.count > 6 {
-                print("character count will be > 6")
-                return false
-            }
-            
-            // Allow total 5 characters with utmost one decimal point and place
-            let text = text as NSString
-            let candidate = text.replacingCharacters(in: range, with: string)
-            let regex = try? NSRegularExpression(pattern: "^\\d{0,4}(\\.\\d{0,1})?$", options: [])
-            return regex?.firstMatch(in: candidate, options: [], range: NSRange(location: 0, length: candidate.count)) != nil
-        }
-        
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.clearsOnBeginEditing = true
-    }
-    
 }
 
 class CustomTextField: UITextField {

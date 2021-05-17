@@ -9,6 +9,11 @@
 import UIKit
 import HealthKit
 
+// Only classes are allowed to conform to this protocol.
+protocol HomeVCDelegate: AnyObject {
+    var heightTextField: CustomTextField! { get }
+}
+
 class ResultViewController: UIViewController {
     
     @IBOutlet weak var bmiLabel: UILabel!
@@ -18,7 +23,7 @@ class ResultViewController: UIViewController {
     
     private let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)
     private let healthKitManager = HealthKitManager()
-    var delegate: HomeVCDelegate!
+    weak var delegate: HomeVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

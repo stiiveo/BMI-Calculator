@@ -6,10 +6,6 @@
 //  Copyright © 2020 Jason Ou Yang. All rights reserved.
 //
 
-protocol HomeVCDelegate {
-    var heightTextField: CustomTextField! { get }
-}
-
 import UIKit
 
 class HomeViewController: UIViewController, HomeVCDelegate {

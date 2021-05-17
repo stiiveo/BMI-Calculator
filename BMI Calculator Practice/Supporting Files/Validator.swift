@@ -40,7 +40,7 @@ final class Validator: ValidatorConvertible {
     func validated(_ string: String?) throws -> Double {
         
         guard let string = string else {
-            throw ValidationError.other("Provided.")
+            throw ValidationError.other("Failed to retrieve string value from either text field.")
         }
         
         guard !string.isEmpty else {

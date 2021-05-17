@@ -29,8 +29,13 @@
 "SUCCESS_MESSAGE" = "Calculated BMI has been saved to HealthKit.";
 
 "AUTH_ERROR_TITLE" = "Oops! An error occured";
-"AUTH_ERROR_MESSAGE" = "Cannot save BMI data to Health App. Please check 'Settings -> Health -> Data Access & Devices' to make sure 'BMI Calculator' has writing access to Health database.";
+"AUTH_ERROR_MESSAGE" = "Cannot save BMI data to Health App. Please make sure 'BMI Calculator' has access to Health database.";
 
 "HEALTHKIT_ERROR_TITLE" = "Unknown error occured";
 "HEALTHKIT_ERROR_MESSAGE" = "Something went wrong with HealthKit operation.";
 
+// Auth View
+"AUTH_TITLE" = "Sync your calculated results with Apple Health";
+"AUTH_MESSAGE" = "Using BMI Calculator with Apple Health App empowers you to better manage your health. You will be able to see all of your health data in one place, so you can track your progress much easier.";
+"AUTH_OK_BUTTON" = "OK";
+"AUTH_SKIP_BUTTON" = "Skip for Now";

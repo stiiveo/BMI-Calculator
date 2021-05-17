@@ -40,6 +40,10 @@ struct Strings {
         case valueZeroDetected = "ZERO_INPUT"
         case buttonNext = "BUTTON_NEXT"
         case buttonDone = "BUTTON_DONE"
+        case authTitle = "AUTH_TITLE"
+        case authMessage = "AUTH_MESSAGE"
+        case authOKButton = "AUTH_OK_BUTTON"
+        case authSkipButton = "AUTH_SKIP_BUTTON"
         
     }
         

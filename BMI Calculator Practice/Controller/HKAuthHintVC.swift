@@ -11,11 +11,18 @@ import HealthKit
 
 class HKAuthHintVC: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var skipBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        okBtn.layer.cornerRadius = 20
+        titleLabel.text = Strings.localizedString(key: .authTitle)
+        messageLabel.text = Strings.localizedString(key: .authMessage)
+        okBtn.setTitle(Strings.localizedString(key: .authOKButton), for: .normal)
+        skipBtn.setTitle(Strings.localizedString(key: .authSkipButton), for: .normal)
+        okBtn.layer.cornerRadius = okBtn.frame.height / 4
     }
     
     private let healthKitManager = HealthKitManager()
@@ -43,7 +50,7 @@ class HKAuthHintVC: UIViewController {
     private func presentSuccessAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: Strings.localizedString(key: .successTitle), message: Strings.localizedString(key: .successMessage), preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default) { _ in
+            let action = UIAlertAction(title: Strings.localizedString(key: .authOKButton), style: .default) { _ in
                 // Data is saved to the store
                 self.dismiss(animated: true)
             }
@@ -55,7 +62,7 @@ class HKAuthHintVC: UIViewController {
     private func presentErrorAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: Strings.localizedString(key: .authErrorTitle), message: Strings.localizedString(key: .authErrorMessage), preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default) { _ in }
+            let action = UIAlertAction(title: Strings.localizedString(key: .authOKButton), style: .default) { _ in }
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }

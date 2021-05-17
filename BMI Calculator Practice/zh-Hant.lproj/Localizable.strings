@@ -19,17 +19,24 @@
 "ZERO_INPUT" = "身高及體重不得為０";
 
 // Health advice for user
-"ADVICE_UNDERWEIGHT" = "🌬一陣風就可以把你帶走 \n多吃點！ 🥗";
+"ADVICE_UNDERWEIGHT" = "🌬一陣風就可以把你帶走 \n多吃點！🥗";
 "ADVICE_NORMAL" = "完美身材👍";
 "ADVICE_OVERWEIGHT" = "少吃多動🏃‍♂️";
 "ADVICE_OBESITY" = "你的健康有很大的風險⚠️";
 
 // Alert messages
-"SUCCESS_TITLE" = "完成！";
+"SUCCESS_TITLE" = "成功";
 "SUCCESS_MESSAGE" = "BMI資料已儲存至「健康」App";
 
 "AUTH_ERROR_TITLE" = "喔，看來有錯誤發生";
-"AUTH_ERROR_MESSAGE" = "BMI 資料無法儲存至健康App \n請至「設定 -> 健康 -> 資料權限與裝置」確認「BMI計算機」擁有足夠的權限";
+"AUTH_ERROR_MESSAGE" = "BMI資料無法儲存至健康App \n請確認「BMI計算機」擁有足夠的權限";
 
 "HEALTHKIT_ERROR_TITLE" = "發生不明錯誤";
 "HEALTHKIT_ERROR_MESSAGE" = "HealthKit出現不明錯誤";
+
+// Auth View
+"AUTH_TITLE" = "同步您的BMI資料至Apple Health App";
+"AUTH_MESSAGE" = "將BMI計算機與Apple Health App搭配使用將能更好地管理您的健康。您將能在同一個地方看到所有已紀錄的健康資料，並能更容易地追蹤您的進度。";
+"AUTH_OK_BUTTON" = "好的";
+"AUTH_SKIP_BUTTON" = "暫時不用";
+

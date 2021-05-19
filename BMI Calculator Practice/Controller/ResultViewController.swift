@@ -12,6 +12,7 @@ import HealthKit
 // Only classes are allowed to conform to this protocol.
 protocol HomeVCDelegate: AnyObject {
     var heightTextField: CustomTextField! { get }
+    var weightTextField: CustomTextField! { get }
 }
 
 class ResultViewController: UIViewController {
@@ -42,6 +43,7 @@ class ResultViewController: UIViewController {
     @IBAction func recalculateBtnPressed(_ sender: UIButton) {
         self.dismiss(animated: true) {
             self.delegate?.heightTextField?.becomeFirstResponder()
+            self.delegate?.weightTextField?.text = ""
         }
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, HomeVCDelegate {
 
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightTextField: CustomTextField!
@@ -91,15 +92,15 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 6
+            if stackView.transform == .identity {
+                stackView.transform = CGAffineTransform(translationX: 0, y: keyboardSize.height / 6 * -1)
             }
         }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        if stackView.transform != .identity {
+            stackView.transform = .identity
             _ = validateInput()
         }
     }

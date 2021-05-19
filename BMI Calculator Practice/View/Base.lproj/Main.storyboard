@@ -119,6 +119,7 @@
                         <outlet property="heightLabel" destination="r8d-MH-ekg" id="hvK-ZC-M58"/>
                         <outlet property="heightTextField" destination="tEP-z7-nvg" id="S8t-ep-sik"/>
                         <outlet property="hintLabel" destination="8f8-iG-555" id="PjU-hF-2CF"/>
+                        <outlet property="stackView" destination="g2Q-8z-Sq4" id="9fg-K7-p8Y"/>
                         <outlet property="weightLabel" destination="mYl-rD-kMb" id="ype-wl-Hv6"/>
                         <outlet property="weightTextField" destination="Mmh-3R-kpF" id="QlQ-h1-LNU"/>
                         <segue destination="bf3-S8-uRW" kind="show" identifier="goToResult" id="kol-hD-UDY"/>

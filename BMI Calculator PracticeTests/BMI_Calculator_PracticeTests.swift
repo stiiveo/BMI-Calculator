@@ -6,28 +6,56 @@
 //  Copyright © 2020 Jason Ou Yang. All rights reserved.
 //
 
+@testable import BMI_Calculator_Practice
 import XCTest
 
 class BMI_Calculator_PracticeTests: XCTestCase {
+    
+    var textField: CustomTextField!
+    var homeVC: HomeViewController!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        textField = CustomTextField()
+        homeVC = HomeViewController()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        textField = nil
+        homeVC = nil
+        try super.tearDownWithError()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func testTextFieldAutoClearing() {
+        textField.text = "Text to be cleared"
+        textField.becomeFirstResponder()
+        
+        if textField.isFirstResponder {
+            XCTAssertTrue(textField.text == "")
         }
     }
+    
+    func testAutoZeroCharAddition() {
+        homeVC.loadView()
+        textField.delegate = homeVC
+        
+        textField.text = ""
+        guard let shouldChangeCharacters = textField.delegate?.textField?(textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: ".") else {
+            print("Failed to get text field delegate assertion")
+            return
+        }
+        
+        XCTAssert(shouldChangeCharacters)
+        textField.text! += "."
+        
+        XCTAssert(textField.text == "0.")
+    }
+    
+    //    func testPerformanceExample() throws {
+//        // This is an example of a performance test case.
+//        measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
 
 }

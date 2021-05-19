@@ -87,7 +87,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
         }
     }
     
-    // MARK: - View Position Adjustment
+    // MARK: - Actions to be taken based on Keyboard's Existence
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {

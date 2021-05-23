@@ -80,9 +80,14 @@ class TextFieldValidatingTests: XCTestCase {
         }
     }
     
-    func testFirstZeroCharacterIsRemoved() {
-        textField.text = "0"
-        
+    func testAllowOnlyOneDigitCharacter() {
+        textField.text = "1."
+        XCTAssertFalse(shouldTextFieldChangeCharacters(textField: textField, range: NSRange(location: textField.text!.count, length: 0), newString: ".")!)
+    }
+    
+    func testAllowOnlyOneDigitPlace() {
+        textField.text = "1.1"
+        XCTAssertFalse(shouldTextFieldChangeCharacters(textField: textField, range: NSRange(location: textField.text!.count, length: 0), newString: "1")!)
     }
     
     private func shouldTextFieldChangeCharacters(textField: UITextField, range: NSRange, newString: String) -> Bool? {

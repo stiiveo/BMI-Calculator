@@ -19,7 +19,7 @@
 		F678298E2480F6AB0038EF9E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678298D2480F6AB0038EF9E /* ResultViewController.swift */; };
 		F67829902481016A0038EF9E /* BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678298F2481016A0038EF9E /* BMI.swift */; };
 		F6782993248102B90038EF9E /* BmiCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782992248102B90038EF9E /* BmiCalculator.swift */; };
-		F6816494249CBCD300931D40 /* BMI_Calculator_PracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6816493249CBCD300931D40 /* BMI_Calculator_PracticeTests.swift */; };
+		F6816494249CBCD300931D40 /* TextFieldValidatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6816493249CBCD300931D40 /* TextFieldValidatingTests.swift */; };
 		F68164A2249CBD1600931D40 /* BMI_Calculator_PracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68164A1249CBD1600931D40 /* BMI_Calculator_PracticeUITests.swift */; };
 		F6A81BFE248A175F00EE1AEC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A81BFD248A175F00EE1AEC /* Default-568h@2x.png */; };
 		F6A81C06248A496A00EE1AEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A81C08248A496A00EE1AEC /* Localizable.strings */; };
@@ -63,7 +63,7 @@
 		F678298F2481016A0038EF9E /* BMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI.swift; sourceTree = "<group>"; };
 		F6782992248102B90038EF9E /* BmiCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiCalculator.swift; sourceTree = "<group>"; };
 		F6816491249CBCD300931D40 /* BMI Calculator PracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BMI Calculator PracticeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6816493249CBCD300931D40 /* BMI_Calculator_PracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI_Calculator_PracticeTests.swift; sourceTree = "<group>"; };
+		F6816493249CBCD300931D40 /* TextFieldValidatingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidatingTests.swift; sourceTree = "<group>"; };
 		F6816495249CBCD300931D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F681649F249CBD1600931D40 /* BMI Calculator PracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BMI Calculator PracticeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68164A1249CBD1600931D40 /* BMI_Calculator_PracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI_Calculator_PracticeUITests.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		F6816492249CBCD300931D40 /* BMI Calculator PracticeTests */ = {
 			isa = PBXGroup;
 			children = (
-				F6816493249CBCD300931D40 /* BMI_Calculator_PracticeTests.swift */,
+				F6816493249CBCD300931D40 /* TextFieldValidatingTests.swift */,
 				F6816495249CBCD300931D40 /* Info.plist */,
 			);
 			path = "BMI Calculator PracticeTests";
@@ -367,7 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6816494249CBCD300931D40 /* BMI_Calculator_PracticeTests.swift in Sources */,
+				F6816494249CBCD300931D40 /* TextFieldValidatingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

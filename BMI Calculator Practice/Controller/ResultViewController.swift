@@ -30,9 +30,9 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         
         // Set up BMI label, advice label and background color
-        bmiLabel.text = String(format: "%.1f", calculatedBmi.value)
-        adviceLabel.text = calculatedBmi.advice
-        self.view.backgroundColor = calculatedBmi.color
+        bmiLabel.text = String(format: "%.1f", calculatedBMI.value)
+        adviceLabel.text = calculatedBMI.advice
+        self.view.backgroundColor = calculatedBMI.color
         
         // Make buttons' background corners rounded
         saveToHealthBtn.layer.cornerRadius = 10

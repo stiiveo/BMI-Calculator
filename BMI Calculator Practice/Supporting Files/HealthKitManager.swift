@@ -15,13 +15,13 @@ typealias syncCompletion = (Bool) -> Void
 struct HealthKitManager {
     
     private let healthStore = HKHealthStore()
-    private let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
+    private let BMIQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
     
     var dataIsAvailable: Bool {
         return HKHealthStore.isHealthDataAvailable()
     }
     var authStatus: HKAuthorizationStatus {
-        return healthStore.authorizationStatus(for: bmiQuantityType)
+        return healthStore.authorizationStatus(for: BMIQuantityType)
     }
     
     func requestHKAuth(completion: @escaping authCompletion) {
@@ -31,7 +31,7 @@ struct HealthKitManager {
             return
         }
         
-        let typesToSync: Set = [ bmiQuantityType ]
+        let typesToSync: Set = [ BMIQuantityType ]
         healthStore.requestAuthorization(toShare: typesToSync, read: nil) { (success, error) in
             guard error == nil else {
                 completion(false)
@@ -43,7 +43,7 @@ struct HealthKitManager {
     }
     
     func saveCalculatedValue(completion: @escaping syncCompletion) {
-        saveData(dataType: bmiQuantityType, withValue: calculatedBmi.value) { success in
+        saveData(dataType: BMIQuantityType, withValue: calculatedBMI.value) { success in
                 guard success else {
                     completion(false)
                     return
@@ -53,9 +53,9 @@ struct HealthKitManager {
     }
     
     private func saveData(dataType: HKQuantityType, withValue value: Double, completion: @escaping syncCompletion) {
-        // Create HKQuatity type object with unit compatible to HealthKit's BMI unit
-        let bmiQuatity = HKQuantity(unit: HKUnit.count(), doubleValue: value)
-        let hKSample = HKQuantitySample(type: dataType, quantity: bmiQuatity, start: Date(), end: Date())
+        // Create HKQuantity type object with unit compatible to HealthKit's BMI unit
+        let BMIQuantity = HKQuantity(unit: HKUnit.count(), doubleValue: value)
+        let hKSample = HKQuantitySample(type: dataType, quantity: BMIQuantity, start: Date(), end: Date())
         
         healthStore.save(hKSample) { (success, error) in
             

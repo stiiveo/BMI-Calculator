@@ -13,21 +13,21 @@ class HKAuthHintVC: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var okBtn: UIButton!
-    @IBOutlet weak var skipBtn: UIButton!
+    @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = Strings.localizedString(key: .authTitle)
         messageLabel.text = Strings.localizedString(key: .authMessage)
-        okBtn.setTitle(Strings.localizedString(key: .authOKButton), for: .normal)
-        skipBtn.setTitle(Strings.localizedString(key: .authSkipButton), for: .normal)
-        okBtn.layer.cornerRadius = okBtn.frame.height / 4
+        okButton.setTitle(Strings.localizedString(key: .authOKButton), for: .normal)
+        skipButton.setTitle(Strings.localizedString(key: .authSkipButton), for: .normal)
+        okButton.layer.cornerRadius = okButton.frame.height / 4
     }
     
     private let healthKitManager = HealthKitManager()
     
-    @IBAction func okBtnPressed(_ sender: UIButton) {
+    @IBAction func okButtonPressed(_ sender: UIButton) {
         healthKitManager.requestHKAuth { success in
             guard success else {
                 return
@@ -68,7 +68,7 @@ class HKAuthHintVC: UIViewController {
         }
     }
     
-    @IBAction func cancelBtnPressed(_ sender: UIButton) {
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 

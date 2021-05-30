@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightTextField: CustomTextField!
     @IBOutlet weak var weightTextField: CustomTextField!
-    @IBOutlet weak var calculateBtn: UIButton!
+    @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var hintLabel: UILabel!
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
         weightLabel.text = Strings.localizedString(key: .weightLabel)
         heightTextField.delegate = self
         weightTextField.delegate = self
-        calculateBtn.layer.cornerRadius = 10
+        calculateButton.layer.cornerRadius = 10
         hintLabel.text = ""
         
         // Look for single or multiple taps.
@@ -36,7 +36,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
         view.addGestureRecognizer(tap)
         addBarButtonToKeyboard()
         
-        // Add keyboard observor to adjust view's y position accordingly.
+        // Add keyboard observer to adjust view's y position accordingly.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -51,7 +51,7 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         if let validatedInput = validateInput() {
-            calculatedBmi = BmiCalculator().calculateBMI(heightInCentimeter: validatedInput.height, weightInKg: validatedInput.weight)
+            calculatedBMI = BMICalculator().calculateBMI(heightInCentimeter: validatedInput.height, weightInKg: validatedInput.weight)
             performSegue(withIdentifier: SegueIdentifier.goToResultView.identifier, sender: self)
         }
     }

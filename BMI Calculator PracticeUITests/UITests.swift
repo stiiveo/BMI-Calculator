@@ -1,5 +1,5 @@
 //
-//  BMI_Calculator_PracticeUITests.swift
+//  UITests.swift
 //  BMI Calculator PracticeUITests
 //
 //  Created by Jason Ou Yang on 2020/6/19.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class BMI_Calculator_PracticeUITests: XCTestCase {
+class UITests: XCTestCase {
 
     override class func setUp() {
         super.setUp()

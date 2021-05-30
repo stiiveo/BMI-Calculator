@@ -1,5 +1,5 @@
 //
-//  TextFieldValidatingTests.swift
+//  UserInputValidatingTests.swift
 //  BMI Calculator PracticeTests
 //
 //  Created by Jason Ou Yang on 2020/6/19.
@@ -9,7 +9,7 @@
 @testable import BMI_Calculator_Practice
 import XCTest
 
-class TextFieldValidatingTests: XCTestCase {
+class UserInputValidatingTests: XCTestCase {
     
     var homeVC: HomeViewController!
     var textField: CustomTextField!

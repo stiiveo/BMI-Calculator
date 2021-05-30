@@ -50,8 +50,10 @@ class HomeViewController: UIViewController, HomeVCDelegate {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        if let validatedInput = validateInput() {
-            calculatedBMI = BMICalculator().calculateBMI(heightInCentimeter: validatedInput.height, weightInKg: validatedInput.weight)
+        if let validatedInput = validateInput(),
+           let BMI = BMICalculator().calculateBMI(
+            heightInCentimeter: validatedInput.height, weightInKg: validatedInput.weight) {
+            calculatedBMI = BMI
             performSegue(withIdentifier: SegueIdentifier.goToResultView.identifier, sender: self)
         }
     }

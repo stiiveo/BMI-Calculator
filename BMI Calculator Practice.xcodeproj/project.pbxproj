@@ -21,7 +21,6 @@
 		F6782993248102B90038EF9E /* BMICalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6782992248102B90038EF9E /* BMICalculator.swift */; };
 		F6816494249CBCD300931D40 /* UserInputValidatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6816493249CBCD300931D40 /* UserInputValidatingTests.swift */; };
 		F68164A2249CBD1600931D40 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68164A1249CBD1600931D40 /* UITests.swift */; };
-		F6A81BFE248A175F00EE1AEC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A81BFD248A175F00EE1AEC /* Default-568h@2x.png */; };
 		F6A81C06248A496A00EE1AEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A81C08248A496A00EE1AEC /* Localizable.strings */; };
 		F6A81C0D248A4D6300EE1AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A81C0F248A4D6300EE1AEC /* InfoPlist.strings */; };
 		F6B25C1B26455EB500BD91F9 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B25C1A26455EB500BD91F9 /* HealthKitManager.swift */; };
@@ -47,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8FB081FD2664A19000EA14AE /* BMI Calculator screenshots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BMI Calculator screenshots.png"; sourceTree = "<group>"; };
 		F6049D1D248771E400381154 /* BMI Calculator Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BMI Calculator Practice.entitlements"; sourceTree = "<group>"; };
 		F6049D1F248771E400381154 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		F60C83E7249B116F00FD7E51 /* HKAuthHintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAuthHintVC.swift; sourceTree = "<group>"; };
@@ -69,7 +69,6 @@
 		F68164A1249CBD1600931D40 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		F68164A3249CBD1600931D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F68164A9249CBF3600931D40 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
-		F6A81BFD248A175F00EE1AEC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F6A81C02248A457900EE1AEC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		F6A81C03248A457900EE1AEC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		F6A81C07248A496A00EE1AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -108,6 +107,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FB081FE2664A19D00EA14AE /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				8FB081FF2664A1AD00EA14AE /* Screenshots */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		8FB081FF2664A1AD00EA14AE /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				8FB081FD2664A19000EA14AE /* BMI Calculator screenshots.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		F6049D1E248771E400381154 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,8 +134,8 @@
 		F6782967247FA4A60038EF9E = {
 			isa = PBXGroup;
 			children = (
+				8FB081FE2664A19D00EA14AE /* Docs */,
 				F68164A9249CBF3600931D40 /* TestPlan.xctestplan */,
-				F6A81BFD248A175F00EE1AEC /* Default-568h@2x.png */,
 				F6782972247FA4A60038EF9E /* BMI Calculator Practice */,
 				F6816492249CBCD300931D40 /* BMI Calculator PracticeTests */,
 				F68164A0249CBD1600931D40 /* BMI Calculator PracticeUITests */,
@@ -322,7 +337,6 @@
 				F6A81C06248A496A00EE1AEC /* Localizable.strings in Resources */,
 				F6A81C0D248A4D6300EE1AEC /* InfoPlist.strings in Resources */,
 				F6782980247FA4AB0038EF9E /* LaunchScreen.storyboard in Resources */,
-				F6A81BFE248A175F00EE1AEC /* Default-568h@2x.png in Resources */,
 				F678297D247FA4AB0038EF9E /* Assets.xcassets in Resources */,
 				F678297B247FA4A70038EF9E /* Main.storyboard in Resources */,
 			);

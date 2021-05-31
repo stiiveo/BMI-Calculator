@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8FB081FD2664A19000EA14AE /* BMI Calculator screenshots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BMI Calculator screenshots.png"; sourceTree = "<group>"; };
+		8FB082002664DD7700EA14AE /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		F6049D1D248771E400381154 /* BMI Calculator Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BMI Calculator Practice.entitlements"; sourceTree = "<group>"; };
 		F6049D1F248771E400381154 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		F60C83E7249B116F00FD7E51 /* HKAuthHintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKAuthHintVC.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		8FB081FF2664A1AD00EA14AE /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				8FB081FD2664A19000EA14AE /* BMI Calculator screenshots.png */,
+				8FB082002664DD7700EA14AE /* screenshot.png */,
 			);
 			path = Screenshots;
 			sourceTree = "<group>";

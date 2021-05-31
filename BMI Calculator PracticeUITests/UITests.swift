@@ -16,6 +16,54 @@ class UITests: XCTestCase {
         app.launch()
     }
     
+    /// Test the appearance of the hint text label when certain conditions apply.
+    func testHintLabelAppearance() {
+        let app = XCUIApplication()
+        let heightField = app.textFields.element(boundBy: 0)
+        let weightField = app.textFields.element(boundBy: 1)
+        
+        // Test hint appearance when only a zero character is inputted into the weight text field.
+        heightField.tap()
+        app.staticTexts.firstMatch.tap()
+        XCTAssert(app.staticTexts["hintLabel"].exists, "Hint label should have a text message.")
+        
+        // Test hint appearance when only a zero character is inputted into the weight text field.
+        weightField.tap()
+        app.staticTexts.firstMatch.tap()
+        XCTAssert(app.staticTexts["hintLabel"].exists, "Hint label should have a text message.")
+        
+        // Test hint appearance when a zero character is inputted into the text field.
+        heightField.tap()
+        heightField.typeText("0")
+        app.buttons["Next"].tap()
+        weightField.typeText("0")
+        app.buttons["Done"].tap()
+        XCTAssert(app.staticTexts["hintLabel"].exists, "Hint label should have a text message.")
+        
+        // Test hint disappearance when both text fields have values other than zero.
+        heightField.tap()
+        heightField.typeText("177")
+        app.buttons["Next"].tap()
+        weightField.typeText("77")
+        app.buttons["Done"].tap()
+        XCTAssertFalse(app.staticTexts["hintLabel"].exists, "Hint label should not have a text message.")
+    }
+    
+    /// Test the dismissal of the keyboard when user presses the view other than the keyboard.
+    func testPressViewToDismissKeyboard() {
+        let app = XCUIApplication()
+        let heightField = app.textFields.element(boundBy: 0)
+        let weightField = app.textFields.element(boundBy: 1)
+        
+        heightField.tap()
+        app.staticTexts.firstMatch.tap()
+        XCTAssertFalse(heightField.hasFocus, "Height text field should have not being focused.")
+        
+        weightField.tap()
+        app.staticTexts.firstMatch.tap()
+        XCTAssertFalse(weightField.hasFocus, "Weight text field should have not being focused.")
+    }
+    
     /// Test the validation of user's input in the height and weight text field.
     func testTextFieldsInput() {
         let app = XCUIApplication()
@@ -39,21 +87,6 @@ class UITests: XCTestCase {
         
         app.buttons[doneButtonTitle].tap()
         XCTAssertFalse(app.keyboards.element.exists, "The keyboard should have had been dismissed.")
-    }
-    
-    /// Test the dismissal of the keyboard when user presses the view other than the keyboard.
-    func testPressViewToDismissKeyboard() {
-        let app = XCUIApplication()
-        let heightField = app.textFields.element(boundBy: 0)
-        let weightField = app.textFields.element(boundBy: 1)
-        
-        heightField.tap()
-        app.staticTexts.firstMatch.tap()
-        XCTAssertFalse(heightField.hasFocus, "Height text field should have not being focused.")
-        
-        weightField.tap()
-        app.staticTexts.firstMatch.tap()
-        XCTAssertFalse(weightField.hasFocus, "Weight text field should have not being focused.")
     }
     
     /// Test the HealthKit authorization process.
@@ -97,39 +130,6 @@ class UITests: XCTestCase {
         
         XCTAssert(heightField.value as! String == "Height", "Value of the height text field should be the placeholder text.")
         XCTAssert(weightField.value as! String == "Weight", "Value of the weight text field should be the placeholder text.")
-    }
-    
-    /// Test the appearance of the hint text label when certain conditions apply.
-    func testHintLabelAppearance() {
-        let app = XCUIApplication()
-        let heightField = app.textFields.element(boundBy: 0)
-        let weightField = app.textFields.element(boundBy: 1)
-        
-        // Test hint appearance when only a zero character is inputted into the weight text field.
-        heightField.tap()
-        app.staticTexts.firstMatch.tap()
-        XCTAssert(app.staticTexts["hintLabel"].exists, "Hint label should have a text message.")
-        
-        // Test hint appearance when only a zero character is inputted into the weight text field.
-        weightField.tap()
-        app.staticTexts.firstMatch.tap()
-        XCTAssert(app.staticTexts["hintLabel"].exists, "Hint label should have a text message.")
-        
-        // Test hint appearance when a zero character is inputted into the text field.
-        heightField.tap()
-        heightField.typeText("0")
-        app.buttons["Next"].tap()
-        weightField.typeText("0")
-        app.buttons["Done"].tap()
-        XCTAssert(app.staticTexts["hintLabel"].exists, "Hint label should have a text message.")
-        
-        // Test hint disappearance when both text fields have values other than zero.
-        heightField.tap()
-        heightField.typeText("177")
-        app.buttons["Next"].tap()
-        weightField.typeText("77")
-        app.buttons["Done"].tap()
-        XCTAssertFalse(app.staticTexts["hintLabel"].exists, "Hint label should not have a text message.")
     }
     
 }

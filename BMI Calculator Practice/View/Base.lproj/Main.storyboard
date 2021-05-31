@@ -221,8 +221,8 @@
                     <connections>
                         <outlet property="adviceLabel" destination="F8g-G4-ROl" id="sWH-Ef-taw"/>
                         <outlet property="bmiLabel" destination="c65-nv-aij" id="phq-Yq-GB3"/>
-                        <outlet property="recalculateBtn" destination="dff-D2-jaK" id="eku-MR-rr5"/>
-                        <outlet property="saveToHealthBtn" destination="KAW-Cd-OJ3" id="yuJ-d5-zIb"/>
+                        <outlet property="recalculateButton" destination="dff-D2-jaK" id="eku-MR-rr5"/>
+                        <outlet property="saveToHealthButton" destination="KAW-Cd-OJ3" id="yuJ-d5-zIb"/>
                         <segue destination="1js-Yu-8zF" kind="show" identifier="goToAuthHint" id="sAy-k3-ngC"/>
                     </connections>
                 </viewController>

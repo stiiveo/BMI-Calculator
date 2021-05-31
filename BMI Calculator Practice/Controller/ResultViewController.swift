@@ -19,25 +19,25 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var bmiLabel: UILabel!
     @IBOutlet weak var adviceLabel: UILabel!
-    @IBOutlet weak var saveToHealthBtn: UIButton!
-    @IBOutlet weak var recalculateBtn: UIButton!
+    @IBOutlet weak var saveToHealthButton: UIButton!
+    @IBOutlet weak var recalculateButton: UIButton!
     
-    private let bmiQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)
+    private let BMIQuantityType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)
     private let healthKitManager = HealthKitManager()
     weak var delegate: HomeVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set up BMI label, advice label and background color
-        bmiLabel.text = String(format: "%.1f", calculatedBMI.value)
+        // Round the calculated BMI value to the first decimal place using schoolbook rule.
+        let BMIValue = (calculatedBMI.value * 10).rounded() / 10
+        bmiLabel.text = String(BMIValue)
         adviceLabel.text = calculatedBMI.advice
         self.view.backgroundColor = calculatedBMI.color
         
-        // Make buttons' background corners rounded
-        saveToHealthBtn.layer.cornerRadius = 10
-        recalculateBtn.layer.cornerRadius = 10
-        saveToHealthBtn.isEnabled = healthKitManager.dataIsAvailable
+        // Round each UI button's corners.
+        saveToHealthButton.layer.cornerRadius = 10
+        recalculateButton.layer.cornerRadius = 10
+        saveToHealthButton.isEnabled = healthKitManager.dataIsAvailable
     }
     
     @IBAction func recalculateBtnPressed(_ sender: UIButton) {
